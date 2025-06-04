@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.persona import router as persona_router
+from app.api.categories import router as category_router
+from app.api.products import router as product_router
 
 app = FastAPI()
 
@@ -18,4 +20,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Include all routers here
 app.include_router(persona_router)
+app.include_router(category_router)
+app.include_router(product_router)
+
