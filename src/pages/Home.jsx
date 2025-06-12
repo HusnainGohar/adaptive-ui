@@ -1,13 +1,15 @@
 "use client"
 
 import { useUser } from "../context/UserContext"
-import { categories } from "../data/categories"
-import { products } from "../data/products"
 import ProductCard from "../components/ProductCard"
 import { PERSONAS } from "../config/personas"
+import { useProductsQuery } from "../hooks/products";
+import { useCategoriesQuery } from "../hooks/categories";
 
 export default function Home({ onNavigate, onProductClick, onCategoryClick }) {
   const { currentPersona } = useUser()
+  const { data: products = [] } = useProductsQuery();
+  const { data: categories = [] } = useCategoriesQuery();
 
   const getHeroContent = () => {
     switch (currentPersona) {
