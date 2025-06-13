@@ -1,14 +1,22 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useUser } from "../context/UserContext"
 import { PERSONA_LIST } from "../config/personas"
+import { usePersona } from "../context/PersonaContext"
 
 export default function PersonaSwitcher() {
+  const { persona } = usePersona()
   const { currentPersona, setCurrentPersona } = useUser()
   const [isOpen, setIsOpen] = useState(false)
 
   const currentPersonaData = PERSONA_LIST.find((p) => p.key === currentPersona)
+
+  useEffect(() => {
+    console.log(currentPersona, persona);
+    
+    setCurrentPersona(persona)
+  }, [persona])
 
   return (
     <div className="relative">
