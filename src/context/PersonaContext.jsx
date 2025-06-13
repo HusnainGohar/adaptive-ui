@@ -3,6 +3,10 @@ import { predictPersona } from '../api/person_api';
 
 const PersonaContext = createContext();
 
+function getRandomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 export function PersonaProvider({ children }) {
   const [persona, setPersona] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -10,20 +14,20 @@ export function PersonaProvider({ children }) {
 
   useEffect(() => {
     const features = {
-      brand_research: 2,
-      brand_visits: 5,
-      cart_adds: 3,
-      deals_clicked: 10,
-      eco_products_viewed: 1,
-      gift_guides_viewed: 0,
-      products_viewed: 25,
-      purchases: 2,
-      quick_purchases: 1,
-      repeat_purchases: 0,
-      reviews_read: 8,
-      searches: 7,
-      specs_viewed: 0,
-      wishlists: 2
+      brand_research: getRandomInteger(1, 200),
+      brand_visits: getRandomInteger(1, 200),
+      cart_adds: getRandomInteger(1, 50),
+      deals_clicked: getRandomInteger(1, 50),
+      eco_products_viewed: getRandomInteger(1, 50),
+      gift_guides_viewed: getRandomInteger(1, 50),
+      products_viewed: getRandomInteger(1, 500),
+      purchases: getRandomInteger(1, 50),
+      quick_purchases: getRandomInteger(1, 20),
+      repeat_purchases: getRandomInteger(1, 20),
+      reviews_read: getRandomInteger(1, 50),
+      searches: getRandomInteger(1, 50),
+      specs_viewed: getRandomInteger(1, 50),
+      wishlists: getRandomInteger(1, 50)
     };
     predictPersona(features)
       .then(predicted => setPersona(predicted))
