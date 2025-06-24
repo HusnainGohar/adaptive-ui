@@ -97,9 +97,9 @@ export default function App() {
   const queryClient = new QueryClient();
 
   return (
-    <PersonaProvider>
-      <AuthProvider>
-        <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <PersonaProvider>
+        <AuthProvider>
           <div className="min-h-screen bg-gray-50">
             {showHeaderFooter && (
               <Header currentView={currentView} onNavigate={handleNavigate} />
@@ -109,8 +109,8 @@ export default function App() {
             </main>
             {showHeaderFooter && <Footer />}
           </div>
-        </QueryClientProvider>
-      </AuthProvider>
-    </PersonaProvider>
+        </AuthProvider>
+      </PersonaProvider>
+    </QueryClientProvider>
   );
 }
