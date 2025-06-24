@@ -25,6 +25,7 @@ export const useLoginMutation = () => {
       
       // Force refetch of user data
       queryClient.refetchQueries({ queryKey: ['user-query'] });
+      queryClient.refetchQueries({ queryKey: ['persona'] });
     }
   });
 };
@@ -34,6 +35,7 @@ export const useUserQuery = () => {
 
   // Check if token exists and is valid
   const hasValidToken = () => {
+    if (typeof window === 'undefined') return false;
     const token = localStorage?.getItem('token');
     if (!token) {
       // Clear any stale data
