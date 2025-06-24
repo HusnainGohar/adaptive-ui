@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import { predictPersona } from '../api/person_api';
+import { createContext, useContext } from 'react';
+import { useUserQuery } from '../hooks/auth';
+import { usePersonaQuery } from '../hooks/usePersonaQuery';
 
 const PersonaContext = createContext();
 
@@ -8,32 +9,15 @@ function getRandomInteger(min, max) {
 }
 
 export function PersonaProvider({ children }) {
-  const [persona, setPersona] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { data: user, isLoading: isUserLoading, error: userError } = useUserQuery();
+  const stats = user?.stats;
 
-  useEffect(() => {
-    const features = {
-      brand_research: getRandomInteger(1, 200),
-      brand_visits: getRandomInteger(1, 200),
-      cart_adds: getRandomInteger(1, 50),
-      deals_clicked: getRandomInteger(1, 50),
-      eco_products_viewed: getRandomInteger(1, 50),
-      gift_guides_viewed: getRandomInteger(1, 50),
-      products_viewed: getRandomInteger(1, 500),
-      purchases: getRandomInteger(1, 50),
-      quick_purchases: getRandomInteger(1, 20),
-      repeat_purchases: getRandomInteger(1, 20),
-      reviews_read: getRandomInteger(1, 50),
-      searches: getRandomInteger(1, 50),
-      specs_viewed: getRandomInteger(1, 50),
-      wishlists: getRandomInteger(1, 50)
-    };
-    predictPersona(features)
-      .then(predicted => setPersona(predicted))
-      .catch(err => setError(err.message))
-      .finally(() => setLoading(false));
-  }, []);
+  // Use the persona query hook
+  const { data: personaData, isLoading: isPersonaLoading, error: personaError } = usePersonaQuery(stats);
+
+  const persona = personaData?.persona;
+  const loading = isUserLoading || isPersonaLoading;
+  const error = userError || personaError?.message || null;
 
   return (
     <PersonaContext.Provider value={{ persona, loading, error }}>
