@@ -1,29 +1,25 @@
 "use client"
 
 import { useState } from "react"
-import { useAuth } from "../context/AuthContext"
+import { useLoginMutation } from "../hooks/auth"
 
 export default function SignIn({ onNavigate }) {
-  const { signIn } = useAuth()
+  const {mutateAsync: signIn, isLoading: signInLoading} = useLoginMutation()
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   })
-  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setIsLoading(true)
     setError("")
 
     try {
-      await signIn(formData.email, formData.password)
+      await signIn({ username: formData.email, password:formData.password})
       onNavigate("home")
     } catch (err) {
       setError("Invalid email or password. Please try again.")
-    } finally {
-      setIsLoading(false)
     }
   }
 
@@ -35,7 +31,6 @@ export default function SignIn({ onNavigate }) {
   }
 
   const handleDemoLogin = async (demoType) => {
-    setIsLoading(true)
     setError("")
 
     const demoAccounts = {
@@ -49,8 +44,6 @@ export default function SignIn({ onNavigate }) {
       onNavigate("home")
     } catch (err) {
       setError("Demo login failed. Please try again.")
-    } finally {
-      setIsLoading(false)
     }
   }
 
@@ -135,10 +128,10 @@ export default function SignIn({ onNavigate }) {
 
           <button
             type="submit"
-            disabled={isLoading}
+            disabled={signInLoading}
             className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isLoading ? (
+            {signInLoading ? (
               <div className="flex items-center justify-center">
                 <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -169,7 +162,6 @@ export default function SignIn({ onNavigate }) {
               <button
                 type="button"
                 onClick={() => handleDemoLogin("customer")}
-                disabled={isLoading}
                 className="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors font-medium disabled:opacity-50"
               >
                 Demo Customer
@@ -177,7 +169,6 @@ export default function SignIn({ onNavigate }) {
               <button
                 type="button"
                 onClick={() => handleDemoLogin("vip")}
-                disabled={isLoading}
                 className="w-full bg-yellow-100 text-yellow-800 py-2 px-4 rounded-lg hover:bg-yellow-200 transition-colors font-medium disabled:opacity-50"
               >
                 Demo VIP
