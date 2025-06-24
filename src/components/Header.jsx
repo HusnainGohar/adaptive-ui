@@ -1,14 +1,16 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useUser } from "../context/UserContext"
 import PersonaSwitcher from "./PersonaSwitcher"
 import { useLogoutMutation, useUserQuery } from "../hooks/auth"
+import { usePersonaQuery } from "../hooks/usePersonaQuery"
 
 export default function Header({ currentView, onNavigate }) {
-  const { getCartItemCount } = useUser()
+  const { getCartItemCount, setCurrentPersona } = useUser()
   const {mutateAsync: signOut} = useLogoutMutation()
   const {data: user} = useUserQuery()
+  const {data: persona} = usePersonaQuery(user?.stats)
   console.log({user});
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
@@ -18,6 +20,13 @@ export default function Header({ currentView, onNavigate }) {
     setIsUserMenuOpen(false)
     onNavigate("home")
   }
+
+  useEffect(() => {
+    console.log({persona});
+    
+    setCurrentPersona(persona?.persona)
+  }, [persona])
+
 
   return (
     <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
@@ -62,7 +71,7 @@ export default function Header({ currentView, onNavigate }) {
 
           {/* Right side */}
           <div className="flex items-center gap-4">
-            <PersonaSwitcher />
+            {/* <PersonaSwitcher /> */}
 
             {/* Cart */}
             <button

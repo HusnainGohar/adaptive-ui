@@ -6,6 +6,7 @@ export const usePersonaQuery = (stats) => {
   
   // Check if token exists and is valid
   const hasValidToken = () => {
+    if (typeof window === 'undefined') return false;
     const token = localStorage.getItem('token');
     if (!token) return false;
     try {
