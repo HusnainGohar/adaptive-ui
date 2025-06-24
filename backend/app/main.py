@@ -1,8 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.persona import router as persona_router
 from app.api.categories import router as category_router
 from app.api.products import router as product_router
+from app.api.auth import router as auth_router
+from app.api.auth import get_current_user
+from app.api.models import User
 
 app = FastAPI()
 
@@ -25,3 +28,14 @@ app.include_router(persona_router)
 app.include_router(category_router)
 app.include_router(product_router)
 
+
+# Include authentication routes
+app.include_router(auth_router, prefix="/auth", tags=["auth"])
+
+@app.get("/users/me")
+async def read_users_me(current_user: User = Depends(get_current_user)):
+    return current_user
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
