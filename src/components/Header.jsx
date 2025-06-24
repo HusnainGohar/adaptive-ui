@@ -4,10 +4,13 @@ import { useState } from "react"
 import { useUser } from "../context/UserContext"
 import { useAuth } from "../context/AuthContext"
 import PersonaSwitcher from "./PersonaSwitcher"
+import { useUserQuery } from "../hooks/auth"
 
 export default function Header({ currentView, onNavigate }) {
   const { getCartItemCount } = useUser()
-  const { user, signOut } = useAuth()
+  const { signOut } = useAuth()
+  const {data: user} = useUserQuery()
+  console.log({user});
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
 
