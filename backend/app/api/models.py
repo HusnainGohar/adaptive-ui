@@ -115,33 +115,65 @@ HARDCODED_USERS = [
         password_hash=pwd_context.hash("user567"),
         role="user",
         stats={
-            "brand_research": 44,
-            "brand_visits": 13,
-            "cart_adds": 50,
+            "brand_research": 15,
+            "brand_visits": 20,
+            "cart_adds": 5,
             "deals_clicked": 2,
-            "eco_products_viewed": 42,
-            "gift_guides_viewed": 41,
-            "products_viewed": 448,
-            "purchases": 9,
-            "quick_purchases": 18,
-            "repeat_purchases": 5,
-            "reviews_read": 23,
-            "searches": 6,
-            "specs_viewed": 23,
-            "wishlists": 31
+            "eco_products_viewed": 10,
+            "gift_guides_viewed": 3,
+            "products_viewed": 150,
+            "purchases": 12,
+            "quick_purchases": 1,
+            "repeat_purchases": 8,
+            "reviews_read": 150,
+            "searches": 120,
+            "specs_viewed": 30,
+            "wishlists": 15
         }
     ),
     User(
         id=7,
         username="user6",
         password_hash=pwd_context.hash("user678"),
-        role="user"
+        role="user",
+        stats={
+            "brand_research": 5,
+            "brand_visits": 10,
+            "cart_adds": 30,
+            "deals_clicked": 150,
+            "eco_products_viewed": 5,
+            "gift_guides_viewed": 2,
+            "products_viewed": 200,
+            "purchases": 25,
+            "quick_purchases": 5,
+            "repeat_purchases": 3,
+            "reviews_read": 10,
+            "searches": 180,
+            "specs_viewed": 10,
+            "wishlists": 5
+        }
     ),
     User(
         id=8,
         username="user7",
         password_hash=pwd_context.hash("user789"),
-        role="user"
+        role="user",
+        stats={
+            "brand_research": 30,
+            "brand_visits": 25,
+            "cart_adds": 8,
+            "deals_clicked": 3,
+            "eco_products_viewed": 15,
+            "gift_guides_viewed": 5,
+            "products_viewed": 200,
+            "purchases": 20,
+            "quick_purchases": 2,
+            "repeat_purchases": 10,
+            "reviews_read": 15,
+            "searches": 150,
+            "specs_viewed": 50,
+            "wishlists": 10
+        }
     ),
     User(
         id=9,
