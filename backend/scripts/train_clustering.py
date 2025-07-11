@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load your user data (no persona column - pure behavioral data)
-df = pd.read_csv("../data/user_behavior.csv")
+df = pd.read_csv("data/user_behavior.csv")
 
 # Use all behavioral features for clustering
 feature_cols = [
