@@ -1,0 +1,14 @@
+brand_research
+brand_visits
+cart_adds
+deals_clicked
+eco_products_viewed
+gift_guides_viewed
+products_viewed
+purchases
+quick_purchases
+repeat_purchases
+reviews_read
+searches
+specs_viewed
+wishlists
