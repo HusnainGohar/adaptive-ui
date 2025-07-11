@@ -40,7 +40,8 @@ HARDCODED_USERS = [
             "repeat_purchases": 11,
             "reviews_read": 5,
             "searches": 46,
-            "specs_viewed": 48
+            "specs_viewed": 48,
+            "wishlists": 8
         }
     ),
     User(
@@ -179,13 +180,67 @@ HARDCODED_USERS = [
         id=9,
         username="user8",
         password_hash=pwd_context.hash("user890"),
-        role="user"
+        role="user",
+        stats={
+            "brand_research": 8,
+            "brand_visits": 15,
+            "cart_adds": 12,
+            "deals_clicked": 8,
+            "eco_products_viewed": 25,
+            "gift_guides_viewed": 8,
+            "products_viewed": 120,
+            "purchases": 8,
+            "quick_purchases": 1,
+            "repeat_purchases": 2,
+            "reviews_read": 12,
+            "searches": 45,
+            "specs_viewed": 15,
+            "wishlists": 8
+        }
     ),
     User(
         id=10,
         username="user9",
         password_hash=pwd_context.hash("user901"),
-        role="user"
+        role="user",
+        stats={
+            "brand_research": 18,
+            "brand_visits": 12,
+            "cart_adds": 2,
+            "deals_clicked": 1,
+            "eco_products_viewed": 0,
+            "gift_guides_viewed": 0,
+            "products_viewed": 28,
+            "purchases": 3,
+            "quick_purchases": 0,
+            "repeat_purchases": 2,
+            "reviews_read": 6,
+            "searches": 20,
+            "specs_viewed": 25,
+            "wishlists": 3
+        }
+    ),
+    User(
+        id=11,
+        username="tech_user",
+        password_hash=pwd_context.hash("tech123"),
+        role="user",
+        stats={
+            "brand_research": 15,
+            "brand_visits": 8,
+            "cart_adds": 3,
+            "deals_clicked": 2,
+            "eco_products_viewed": 1,
+            "gift_guides_viewed": 0,
+            "products_viewed": 25,
+            "purchases": 2,
+            "quick_purchases": 0,
+            "repeat_purchases": 1,
+            "reviews_read": 8,
+            "searches": 18,
+            "specs_viewed": 22,
+            "wishlists": 4
+        }
     )
 ]
 

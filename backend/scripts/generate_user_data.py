@@ -39,7 +39,7 @@ users_per_persona = 1000  # Adjust as needed
 
 for persona, features in PERSONAS.items():
     for _ in range(users_per_persona):
-        row = {"user_id": user_id, "persona": persona}
+        row = {"user_id": user_id}
         # Main persona features: realistic values
         for feat in all_features:
             if feat in features:
@@ -54,6 +54,8 @@ for persona, features in PERSONAS.items():
         rows.append(row)
         user_id += 1
 
-df = pd.DataFrame(rows, columns=["user_id", "persona"] + all_features)
+df = pd.DataFrame(rows, columns=["user_id"] + all_features)
 df.to_csv("data/user_behavior.csv", index=False)
-print(f"✅ user_behavior.csv generated with {len(rows)} users and realistic, ML-ready data.")
+print(f"✅ user_behavior.csv generated with {len(rows)} users for unsupervised learning.")
+print(f"📊 Features: {len(all_features)} behavioral metrics")
+print(f"🎯 Model will discover {len(PERSONAS)} natural user segments from behavior patterns.")
