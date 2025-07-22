@@ -1,0 +1,16 @@
+{
+  ":review_reader'": "deal_hunter'",
+  ":window_shopper', 'impulse_shopper'':, 'loyal_customer''practical_shopper' , 'gift_giver',:ethical_shopper'": -0.3619,
+  "cart_adds": -0.3758,
+  "deals_clicked": -0.3545,
+  "eco_products_viewed": -0.3695,
+  "gift_guides_viewed": -0.3818,
+  "products_viewed": 0.2341,
+  "purchases": 0.3104,
+  "quick_purchases": -0.385,
+  "repeat_purchases": -0.3696,
+  "reviews_read": -0.3757,
+  "searches": 0.029,
+  "specs_viewed": 2.5657,
+  "wishlists": -0.3628
+}
