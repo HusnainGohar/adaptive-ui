@@ -1,51 +1,51 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useLoginMutation } from "../hooks/auth"
+import { useState } from "react";
+import { useLoginMutation } from "../hooks/auth";
 
 export default function SignIn({ onNavigate }) {
-  const {mutateAsync: signIn, isLoading: signInLoading} = useLoginMutation()
+  const { mutateAsync: signIn, isLoading: signInLoading } = useLoginMutation();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-  })
-  const [error, setError] = useState("")
+  });
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setError("")
+    e.preventDefault();
+    setError("");
 
     try {
-      await signIn({ username: formData.email, password:formData.password})
-      onNavigate("home")
+      await signIn({ username: formData.email, password: formData.password });
+      onNavigate("home");
     } catch (err) {
-      setError("Invalid email or password. Please try again.")
+      setError("Invalid email or password. Please try again.");
     }
-  }
+  };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const handleDemoLogin = async (demoType) => {
-    setError("")
+    setError("");
 
     const demoAccounts = {
       customer: { email: "customer@demo.com", password: "demo123" },
       vip: { email: "vip@demo.com", password: "demo123" },
-    }
+    };
 
     try {
-      const account = demoAccounts[demoType]
-      await signIn(account.email, account.password)
-      onNavigate("home")
+      const account = demoAccounts[demoType];
+      await signIn(account.email, account.password);
+      onNavigate("home");
     } catch (err) {
-      setError("Demo login failed. Please try again.")
+      setError("Demo login failed. Please try again.");
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -54,15 +54,23 @@ export default function SignIn({ onNavigate }) {
           <div className="flex justify-center">
             <span className="text-6xl">🛍️</span>
           </div>
-          <h2 className="mt-6 text-3xl font-bold text-gray-900">Welcome back!</h2>
-          <p className="mt-2 text-gray-600">Sign in to your AdaptiveShop account</p>
+          <h2 className="mt-6 text-3xl font-bold text-gray-900">
+            Welcome back!
+          </h2>
+          <p className="mt-2 text-gray-600">
+            Sign in to your AdaptiveShop account
+          </p>
         </div>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
               <div className="flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
                   <path
                     fillRule="evenodd"
                     d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
@@ -76,7 +84,10 @@ export default function SignIn({ onNavigate }) {
 
           <div className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Username
               </label>
               <input
@@ -92,7 +103,10 @@ export default function SignIn({ onNavigate }) {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Password
               </label>
               <input
@@ -116,12 +130,18 @@ export default function SignIn({ onNavigate }) {
                 type="checkbox"
                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
+              <label
+                htmlFor="remember-me"
+                className="ml-2 block text-sm text-gray-700"
+              >
                 Remember me
               </label>
             </div>
 
-            <button type="button" className="text-sm text-blue-600 hover:text-blue-500">
+            <button
+              type="button"
+              className="text-sm text-blue-600 hover:text-blue-500"
+            >
               Forgot password?
             </button>
           </div>
@@ -133,8 +153,19 @@ export default function SignIn({ onNavigate }) {
           >
             {signInLoading ? (
               <div className="flex items-center justify-center">
-                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <svg
+                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
                   <path
                     className="opacity-75"
                     fill="currentColor"
@@ -154,7 +185,9 @@ export default function SignIn({ onNavigate }) {
                 <div className="w-full border-t border-gray-300" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-gray-50 text-gray-500">Or try demo accounts</span>
+                <span className="px-2 bg-gray-50 text-gray-500">
+                  Or try demo accounts
+                </span>
               </div>
             </div>
 
@@ -189,5 +222,5 @@ export default function SignIn({ onNavigate }) {
         </form>
       </div>
     </div>
-  )
+  );
 }

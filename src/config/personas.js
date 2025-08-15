@@ -7,7 +7,7 @@ export const PERSONAS = {
   PRACTICAL_SHOPPER: "practical_shopper",
   ETHICAL_SHOPPER: "ethical_shopper",
   GIFT_GIVER: "gift_giver",
-}
+};
 
 export const PERSONA_LIST = [
   {
@@ -58,4 +58,4 @@ export const PERSONA_LIST = [
     description: "Shops for gifts with special packaging needs",
     icon: "🎁",
   },
-]
+];

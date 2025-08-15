@@ -12,6 +12,7 @@ A machine learning-powered e-commerce platform that adapts the user interface ba
 ## 🏗️ Architecture
 
 ### Frontend (Next.js)
+
 - React 19 with TypeScript
 - Tailwind CSS for styling
 - Radix UI components
@@ -19,12 +20,14 @@ A machine learning-powered e-commerce platform that adapts the user interface ba
 - Adaptive layouts for each persona
 
 ### Backend (Python FastAPI)
+
 - FastAPI with automatic API documentation
 - Scikit-learn for ML clustering
 - JWT authentication
 - PostgreSQL database (configurable)
 
 ### Machine Learning
+
 - Unsupervised clustering with K-means
 - 8 discovered user personas:
   - Review Reader
@@ -41,12 +44,14 @@ A machine learning-powered e-commerce platform that adapts the user interface ba
 ### Local Development
 
 1. **Clone the repository**
+
    ```bash
    git clone <your-repo-url>
    cd adaptive-personas
    ```
 
 2. **Install frontend dependencies**
+
    ```bash
    npm install
    # or
@@ -54,29 +59,34 @@ A machine learning-powered e-commerce platform that adapts the user interface ba
    ```
 
 3. **Install backend dependencies**
+
    ```bash
    cd backend
    pip install -r requirements.txt
    ```
 
 4. **Generate training data**
+
    ```bash
    cd backend
    python scripts/generate_user_data.py
    ```
 
 5. **Train the ML model**
+
    ```bash
    python scripts/train_clustering.py
    ```
 
 6. **Start the backend server**
+
    ```bash
    cd backend
    uvicorn app.main:app --reload
    ```
 
 7. **Start the frontend development server**
+
    ```bash
    npm run dev
    # or
@@ -91,16 +101,19 @@ A machine learning-powered e-commerce platform that adapts the user interface ba
 ### Frontend Deployment (Vercel)
 
 1. **Install Vercel CLI**
+
    ```bash
    npm i -g vercel
    ```
 
 2. **Login to Vercel**
+
    ```bash
    vercel login
    ```
 
 3. **Deploy**
+
    ```bash
    vercel --prod
    ```
@@ -112,6 +125,7 @@ A machine learning-powered e-commerce platform that adapts the user interface ba
 ### Backend Deployment Options
 
 #### Option A: Railway (Recommended)
+
 1. Go to [railway.app](https://railway.app)
 2. Connect your GitHub repository
 3. Select the `backend` folder
@@ -119,6 +133,7 @@ A machine learning-powered e-commerce platform that adapts the user interface ba
 5. Deploy
 
 #### Option B: Render
+
 1. Go to [render.com](https://render.com)
 2. Create a new Web Service
 3. Connect your GitHub repository
@@ -126,6 +141,7 @@ A machine learning-powered e-commerce platform that adapts the user interface ba
 5. Set start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 
 #### Option C: Heroku
+
 1. Install Heroku CLI
 2. Create a `Procfile` in backend folder:
    ```
@@ -142,6 +158,7 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
 
 For production, set these in your deployment platform:
+
 - `NEXT_PUBLIC_API_URL`: Your deployed backend URL
 
 ## 📊 ML Model Training
@@ -183,11 +200,13 @@ Each persona has a unique UI layout:
 ## 🔧 Configuration
 
 ### Persona Configuration
+
 - `backend/app/config/personas.py`: Backend persona definitions
 - `src/config/personas.js`: Frontend persona configurations
 - `backend/app/config/cluster_mapping.py`: ML cluster to persona mapping
 
 ### Layout Configuration
+
 - `src/config/layoutMap.js`: Maps personas to layout components
 - `src/layouts/`: Individual layout components for each persona
 
@@ -213,6 +232,7 @@ MIT License - see LICENSE file for details
 ## 🆘 Support
 
 For issues and questions:
+
 1. Check the documentation
 2. Search existing issues
 3. Create a new issue with detailed information
@@ -224,4 +244,4 @@ For issues and questions:
 - [ ] Advanced ML models (deep learning)
 - [ ] Multi-language support
 - [ ] Mobile app
-- [ ] Analytics dashboard 
+- [ ] Analytics dashboard

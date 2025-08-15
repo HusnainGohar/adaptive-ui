@@ -6,7 +6,8 @@ export const products = [
     originalPrice: 399.99,
     rating: 4.8,
     reviewCount: 2847,
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop",
     category: "Electronics",
     brand: "AudioTech",
     inStock: true,
@@ -17,7 +18,12 @@ export const products = [
       recyclablePackaging: true,
       ethicalSourcing: true,
     },
-    features: ["Noise Cancellation", "30hr Battery", "Quick Charge", "Wireless"],
+    features: [
+      "Noise Cancellation",
+      "30hr Battery",
+      "Quick Charge",
+      "Wireless",
+    ],
     description:
       "Experience premium sound quality with our latest wireless headphones featuring advanced noise cancellation technology.",
     specifications: {
@@ -35,7 +41,8 @@ export const products = [
     originalPrice: 39.99,
     rating: 4.6,
     reviewCount: 1203,
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
     category: "Clothing",
     brand: "EcoWear",
     inStock: true,
@@ -48,7 +55,8 @@ export const products = [
       organicMaterial: true,
     },
     features: ["100% Organic Cotton", "Fair Trade", "Soft Feel", "Durable"],
-    description: "Comfortable and sustainable t-shirt made from 100% organic cotton with fair trade certification.",
+    description:
+      "Comfortable and sustainable t-shirt made from 100% organic cotton with fair trade certification.",
     specifications: {
       Material: "100% Organic Cotton",
       Care: "Machine Wash Cold",
@@ -64,7 +72,8 @@ export const products = [
     originalPrice: 249.99,
     rating: 4.7,
     reviewCount: 5621,
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop",
     category: "Electronics",
     brand: "FitTech",
     inStock: true,
@@ -75,8 +84,14 @@ export const products = [
       recyclablePackaging: true,
       ethicalSourcing: true,
     },
-    features: ["Heart Rate Monitor", "GPS Tracking", "Water Resistant", "7-day Battery"],
-    description: "Track your fitness goals with this advanced smartwatch featuring comprehensive health monitoring.",
+    features: [
+      "Heart Rate Monitor",
+      "GPS Tracking",
+      "Water Resistant",
+      "7-day Battery",
+    ],
+    description:
+      "Track your fitness goals with this advanced smartwatch featuring comprehensive health monitoring.",
     specifications: {
       Display: "1.4 inch AMOLED",
       Battery: "7 days",
@@ -92,7 +107,8 @@ export const products = [
     originalPrice: 89.99,
     rating: 4.9,
     reviewCount: 892,
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop",
     category: "Accessories",
     brand: "CraftLeather",
     inStock: true,
@@ -103,8 +119,14 @@ export const products = [
       recyclablePackaging: true,
       ethicalSourcing: true,
     },
-    features: ["Genuine Leather", "RFID Blocking", "Slim Design", "Handcrafted"],
-    description: "Handcrafted minimalist wallet made from premium leather with RFID protection.",
+    features: [
+      "Genuine Leather",
+      "RFID Blocking",
+      "Slim Design",
+      "Handcrafted",
+    ],
+    description:
+      "Handcrafted minimalist wallet made from premium leather with RFID protection.",
     specifications: {
       Material: "Full Grain Leather",
       Dimensions: "4.3 x 3.4 x 0.3 inches",
@@ -120,7 +142,8 @@ export const products = [
     originalPrice: 59.99,
     rating: 4.5,
     reviewCount: 1456,
-    image: "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?w=400&h=400&fit=crop",
     category: "Home & Kitchen",
     brand: "ArtisanCraft",
     inStock: true,
@@ -132,8 +155,14 @@ export const products = [
       ethicalSourcing: true,
       organicMaterial: false,
     },
-    features: ["Handmade Ceramic", "Microwave Safe", "Dishwasher Safe", "Set of 4"],
-    description: "Beautiful handcrafted ceramic mugs perfect for your morning coffee or evening tea.",
+    features: [
+      "Handmade Ceramic",
+      "Microwave Safe",
+      "Dishwasher Safe",
+      "Set of 4",
+    ],
+    description:
+      "Beautiful handcrafted ceramic mugs perfect for your morning coffee or evening tea.",
     specifications: {
       Material: "High-Quality Ceramic",
       Capacity: "12 oz each",
@@ -149,7 +178,8 @@ export const products = [
     originalPrice: 49.99,
     rating: 4.4,
     reviewCount: 2103,
-    image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=400&fit=crop",
     category: "Electronics",
     brand: "ChargeTech",
     inStock: true,
@@ -160,8 +190,14 @@ export const products = [
       recyclablePackaging: true,
       ethicalSourcing: false,
     },
-    features: ["Fast Charging", "LED Indicator", "Non-Slip Base", "Universal Compatible"],
-    description: "Fast wireless charging pad compatible with all Qi-enabled devices.",
+    features: [
+      "Fast Charging",
+      "LED Indicator",
+      "Non-Slip Base",
+      "Universal Compatible",
+    ],
+    description:
+      "Fast wireless charging pad compatible with all Qi-enabled devices.",
     specifications: {
       "Charging Speed": "15W Fast Charge",
       Compatibility: "Qi-enabled devices",
@@ -177,7 +213,8 @@ export const products = [
     originalPrice: 34.99,
     rating: 4.8,
     reviewCount: 743,
-    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop",
     category: "Home & Kitchen",
     brand: "EcoKitchen",
     inStock: true,
@@ -189,8 +226,14 @@ export const products = [
       ethicalSourcing: true,
       organicMaterial: true,
     },
-    features: ["Sustainable Bamboo", "Antibacterial", "Set of 3", "Easy to Clean"],
-    description: "Eco-friendly bamboo cutting board set that's naturally antibacterial and sustainable.",
+    features: [
+      "Sustainable Bamboo",
+      "Antibacterial",
+      "Set of 3",
+      "Easy to Clean",
+    ],
+    description:
+      "Eco-friendly bamboo cutting board set that's naturally antibacterial and sustainable.",
     specifications: {
       Material: "100% Bamboo",
       "Set Includes": "Large, Medium, Small boards",
@@ -206,7 +249,8 @@ export const products = [
     originalPrice: 99.99,
     rating: 4.6,
     reviewCount: 3241,
-    image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=400&fit=crop",
     category: "Electronics",
     brand: "SoundWave",
     inStock: true,
@@ -218,7 +262,8 @@ export const products = [
       ethicalSourcing: true,
     },
     features: ["360° Sound", "Waterproof", "12hr Battery", "Voice Assistant"],
-    description: "Portable Bluetooth speaker with 360-degree sound and waterproof design.",
+    description:
+      "Portable Bluetooth speaker with 360-degree sound and waterproof design.",
     specifications: {
       "Battery Life": "12 hours",
       "Water Rating": "IPX7",
@@ -234,7 +279,8 @@ export const products = [
     originalPrice: 79.99,
     rating: 4.7,
     reviewCount: 1876,
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=400&fit=crop",
     category: "Sports & Fitness",
     brand: "ZenFit",
     inStock: true,
@@ -246,8 +292,14 @@ export const products = [
       ethicalSourcing: true,
       organicMaterial: true,
     },
-    features: ["Non-Slip Surface", "Extra Thick", "Eco-Friendly", "Carrying Strap"],
-    description: "Premium eco-friendly yoga mat with superior grip and comfort for all practice levels.",
+    features: [
+      "Non-Slip Surface",
+      "Extra Thick",
+      "Eco-Friendly",
+      "Carrying Strap",
+    ],
+    description:
+      "Premium eco-friendly yoga mat with superior grip and comfort for all practice levels.",
     specifications: {
       Material: "Natural Rubber & Cork",
       Thickness: "6mm",
@@ -263,7 +315,8 @@ export const products = [
     originalPrice: 34.99,
     rating: 4.5,
     reviewCount: 2567,
-    image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400&h=400&fit=crop",
     category: "Sports & Fitness",
     brand: "HydroLife",
     inStock: true,
@@ -274,8 +327,14 @@ export const products = [
       recyclablePackaging: true,
       ethicalSourcing: true,
     },
-    features: ["Double Wall Insulated", "Leak Proof", "BPA Free", "24hr Cold/12hr Hot"],
-    description: "Insulated stainless steel water bottle that keeps drinks cold for 24 hours or hot for 12 hours.",
+    features: [
+      "Double Wall Insulated",
+      "Leak Proof",
+      "BPA Free",
+      "24hr Cold/12hr Hot",
+    ],
+    description:
+      "Insulated stainless steel water bottle that keeps drinks cold for 24 hours or hot for 12 hours.",
     specifications: {
       Capacity: "32 oz",
       Material: "18/8 Stainless Steel",
@@ -291,7 +350,8 @@ export const products = [
     originalPrice: 42.99,
     rating: 4.3,
     reviewCount: 654,
-    image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=400&fit=crop",
     category: "Office",
     brand: "WorkSpace",
     inStock: true,
@@ -302,8 +362,14 @@ export const products = [
       recyclablePackaging: true,
       ethicalSourcing: true,
     },
-    features: ["Bamboo Construction", "Multiple Compartments", "Phone Stand", "Cable Management"],
-    description: "Elegant bamboo desk organizer set to keep your workspace tidy and efficient.",
+    features: [
+      "Bamboo Construction",
+      "Multiple Compartments",
+      "Phone Stand",
+      "Cable Management",
+    ],
+    description:
+      "Elegant bamboo desk organizer set to keep your workspace tidy and efficient.",
     specifications: {
       Material: "Sustainable Bamboo",
       "Set Includes": "5 pieces",
@@ -319,7 +385,8 @@ export const products = [
     originalPrice: 89.99,
     rating: 4.6,
     reviewCount: 1432,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
     category: "Office",
     brand: "BrightWork",
     inStock: true,
@@ -330,8 +397,14 @@ export const products = [
       recyclablePackaging: true,
       ethicalSourcing: false,
     },
-    features: ["Adjustable Brightness", "USB Charging Port", "Touch Control", "Eye Care"],
-    description: "Modern LED desk lamp with adjustable brightness and built-in USB charging port.",
+    features: [
+      "Adjustable Brightness",
+      "USB Charging Port",
+      "Touch Control",
+      "Eye Care",
+    ],
+    description:
+      "Modern LED desk lamp with adjustable brightness and built-in USB charging port.",
     specifications: {
       "Light Source": "LED",
       "Brightness Levels": "5 levels",
@@ -347,7 +420,8 @@ export const products = [
     originalPrice: 69.99,
     rating: 4.8,
     reviewCount: 987,
-    image: "https://images.unsplash.com/photo-1602874801006-e26d3d17d0a5?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1602874801006-e26d3d17d0a5?w=400&h=400&fit=crop",
     category: "Home & Decor",
     brand: "AromaBliss",
     inStock: true,
@@ -360,7 +434,8 @@ export const products = [
       organicMaterial: true,
     },
     features: ["Soy Wax", "Essential Oils", "Set of 4", "40hr Burn Time"],
-    description: "Luxury scented candle collection made with natural soy wax and essential oils.",
+    description:
+      "Luxury scented candle collection made with natural soy wax and essential oils.",
     specifications: {
       Material: "100% Soy Wax",
       "Burn Time": "40 hours each",
@@ -376,7 +451,8 @@ export const products = [
     originalPrice: 39.99,
     rating: 4.4,
     reviewCount: 1876,
-    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=400&fit=crop",
     category: "Electronics",
     brand: "TechFlow",
     inStock: true,
@@ -387,8 +463,14 @@ export const products = [
       recyclablePackaging: true,
       ethicalSourcing: false,
     },
-    features: ["Ergonomic Design", "Silent Click", "Long Battery", "Precision Tracking"],
-    description: "Ergonomic wireless mouse with silent clicking and precision tracking for productivity.",
+    features: [
+      "Ergonomic Design",
+      "Silent Click",
+      "Long Battery",
+      "Precision Tracking",
+    ],
+    description:
+      "Ergonomic wireless mouse with silent clicking and precision tracking for productivity.",
     specifications: {
       Connectivity: "2.4GHz Wireless",
       "Battery Life": "18 months",
@@ -404,7 +486,8 @@ export const products = [
     originalPrice: 49.99,
     rating: 4.5,
     reviewCount: 2134,
-    image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=400&h=400&fit=crop",
     category: "Health & Wellness",
     brand: "GreenFit",
     inStock: true,
@@ -416,8 +499,14 @@ export const products = [
       ethicalSourcing: true,
       organicMaterial: true,
     },
-    features: ["Organic Ingredients", "25g Protein", "Vegan", "No Artificial Flavors"],
-    description: "Premium plant-based protein powder made from organic pea and hemp protein.",
+    features: [
+      "Organic Ingredients",
+      "25g Protein",
+      "Vegan",
+      "No Artificial Flavors",
+    ],
+    description:
+      "Premium plant-based protein powder made from organic pea and hemp protein.",
     specifications: {
       "Protein per Serving": "25g",
       Servings: "30",
@@ -426,8 +515,8 @@ export const products = [
       Warranty: "Money-back guarantee",
     },
   },
-]
+];
 
 export const getProductById = (id) => {
-  return products.find((product) => product.id === Number.parseInt(id))
-}
+  return products.find((product) => product.id === Number.parseInt(id));
+};

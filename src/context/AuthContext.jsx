@@ -1,9 +1,13 @@
-"use client"
+"use client";
 
 import { createContext, useContext, useState, useEffect } from "react";
-import { useLoginMutation, useUserQuery, useLogoutMutation } from "../hooks/auth";
+import {
+  useLoginMutation,
+  useUserQuery,
+  useLogoutMutation,
+} from "../hooks/auth";
 
-const AuthContext = createContext()
+const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,14 +38,14 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signOut = () => {
-    logoutMutation.mutate()
-  }
+    logoutMutation.mutate();
+  };
 
   const updateProfile = (updates) => {
-    const updatedUser = { ...user, ...updates }
-    setUser(updatedUser)
-    localStorage.setItem("user", JSON.stringify(updatedUser))
-  }
+    const updatedUser = { ...user, ...updates };
+    setUser(updatedUser);
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+  };
 
   return (
     <AuthContext.Provider
@@ -57,13 +61,13 @@ export const AuthProvider = ({ children }) => {
     >
       {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
 export const useAuth = () => {
-  const context = useContext(AuthContext)
+  const context = useContext(AuthContext);
   if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider")
+    throw new Error("useAuth must be used within an AuthProvider");
   }
-  return context
-}
+  return context;
+};
