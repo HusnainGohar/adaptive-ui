@@ -1,4 +1,5 @@
 import "../src/index.css"
+import { AppInitializer } from "./components/app-initializer"
 
 export const metadata = {
   title: "AdaptiveShop - Personalized Shopping Experience",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#3B82F6" />
       </head>
       <body className="antialiased">
+        <AppInitializer />
         <div id="root">{children}</div>
       </body>
     </html>
