@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#3B82F6" />
       </head>
       <body className="antialiased">
-        <AppInitializer />
+        {/* <AppInitializer /> */}
         <div id="root">{children}</div>
       </body>
     </html>
