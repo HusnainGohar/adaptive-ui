@@ -18,7 +18,12 @@
         "recyclablePackaging": true,
         "ethicalSourcing": true
       },
-      "features": ["Noise Cancellation", "30hr Battery", "Quick Charge", "Wireless"],
+      "features": [
+        "Noise Cancellation",
+        "30hr Battery",
+        "Quick Charge",
+        "Wireless"
+      ],
       "description": "Experience premium sound quality with our latest wireless headphones featuring advanced noise cancellation technology.",
       "specifications": {
         "Battery Life": "30 hours",
@@ -75,7 +80,12 @@
         "recyclablePackaging": true,
         "ethicalSourcing": true
       },
-      "features": ["Heart Rate Monitor", "GPS Tracking", "Water Resistant", "7-day Battery"],
+      "features": [
+        "Heart Rate Monitor",
+        "GPS Tracking",
+        "Water Resistant",
+        "7-day Battery"
+      ],
       "description": "Track your fitness goals with this advanced smartwatch featuring comprehensive health monitoring.",
       "specifications": {
         "Display": "1.4 inch AMOLED",
@@ -103,7 +113,12 @@
         "recyclablePackaging": true,
         "ethicalSourcing": true
       },
-      "features": ["Genuine Leather", "RFID Blocking", "Slim Design", "Handcrafted"],
+      "features": [
+        "Genuine Leather",
+        "RFID Blocking",
+        "Slim Design",
+        "Handcrafted"
+      ],
       "description": "Handcrafted minimalist wallet made from premium leather with RFID protection.",
       "specifications": {
         "Material": "Full Grain Leather",
@@ -132,7 +147,12 @@
         "ethicalSourcing": true,
         "organicMaterial": false
       },
-      "features": ["Handmade Ceramic", "Microwave Safe", "Dishwasher Safe", "Set of 4"],
+      "features": [
+        "Handmade Ceramic",
+        "Microwave Safe",
+        "Dishwasher Safe",
+        "Set of 4"
+      ],
       "description": "Beautiful handcrafted ceramic mugs perfect for your morning coffee or evening tea.",
       "specifications": {
         "Material": "High-Quality Ceramic",
@@ -160,7 +180,12 @@
         "recyclablePackaging": true,
         "ethicalSourcing": false
       },
-      "features": ["Fast Charging", "LED Indicator", "Non-Slip Base", "Universal Compatible"],
+      "features": [
+        "Fast Charging",
+        "LED Indicator",
+        "Non-Slip Base",
+        "Universal Compatible"
+      ],
       "description": "Fast wireless charging pad compatible with all Qi-enabled devices.",
       "specifications": {
         "Charging Speed": "15W Fast Charge",
@@ -189,7 +214,12 @@
         "ethicalSourcing": true,
         "organicMaterial": true
       },
-      "features": ["Sustainable Bamboo", "Antibacterial", "Set of 3", "Easy to Clean"],
+      "features": [
+        "Sustainable Bamboo",
+        "Antibacterial",
+        "Set of 3",
+        "Easy to Clean"
+      ],
       "description": "Eco-friendly bamboo cutting board set that's naturally antibacterial and sustainable.",
       "specifications": {
         "Material": "100% Bamboo",
@@ -217,7 +247,12 @@
         "recyclablePackaging": true,
         "ethicalSourcing": true
       },
-      "features": ["360° Sound", "Waterproof", "12hr Battery", "Voice Assistant"],
+      "features": [
+        "360° Sound",
+        "Waterproof",
+        "12hr Battery",
+        "Voice Assistant"
+      ],
       "description": "Portable Bluetooth speaker with 360-degree sound and waterproof design.",
       "specifications": {
         "Battery Life": "12 hours",
@@ -246,7 +281,12 @@
         "ethicalSourcing": true,
         "organicMaterial": true
       },
-      "features": ["Non-Slip Surface", "Extra Thick", "Eco-Friendly", "Carrying Strap"],
+      "features": [
+        "Non-Slip Surface",
+        "Extra Thick",
+        "Eco-Friendly",
+        "Carrying Strap"
+      ],
       "description": "Premium eco-friendly yoga mat with superior grip and comfort for all practice levels.",
       "specifications": {
         "Material": "Natural Rubber & Cork",
@@ -274,7 +314,12 @@
         "recyclablePackaging": true,
         "ethicalSourcing": true
       },
-      "features": ["Double Wall Insulated", "Leak Proof", "BPA Free", "24hr Cold/12hr Hot"],
+      "features": [
+        "Double Wall Insulated",
+        "Leak Proof",
+        "BPA Free",
+        "24hr Cold/12hr Hot"
+      ],
       "description": "Insulated stainless steel water bottle that keeps drinks cold for 24 hours or hot for 12 hours.",
       "specifications": {
         "Capacity": "32 oz",
@@ -302,7 +347,12 @@
         "recyclablePackaging": true,
         "ethicalSourcing": true
       },
-      "features": ["Bamboo Construction", "Multiple Compartments", "Phone Stand", "Cable Management"],
+      "features": [
+        "Bamboo Construction",
+        "Multiple Compartments",
+        "Phone Stand",
+        "Cable Management"
+      ],
       "description": "Elegant bamboo desk organizer set to keep your workspace tidy and efficient.",
       "specifications": {
         "Material": "Sustainable Bamboo",
@@ -330,7 +380,12 @@
         "recyclablePackaging": true,
         "ethicalSourcing": false
       },
-      "features": ["Adjustable Brightness", "USB Charging Port", "Touch Control", "Eye Care"],
+      "features": [
+        "Adjustable Brightness",
+        "USB Charging Port",
+        "Touch Control",
+        "Eye Care"
+      ],
       "description": "Modern LED desk lamp with adjustable brightness and built-in USB charging port.",
       "specifications": {
         "Light Source": "LED",
@@ -387,7 +442,12 @@
         "recyclablePackaging": true,
         "ethicalSourcing": false
       },
-      "features": ["Ergonomic Design", "Silent Click", "Long Battery", "Precision Tracking"],
+      "features": [
+        "Ergonomic Design",
+        "Silent Click",
+        "Long Battery",
+        "Precision Tracking"
+      ],
       "description": "Ergonomic wireless mouse with silent clicking and precision tracking for productivity.",
       "specifications": {
         "Connectivity": "2.4GHz Wireless",
@@ -416,7 +476,12 @@
         "ethicalSourcing": true,
         "organicMaterial": true
       },
-      "features": ["Organic Ingredients", "25g Protein", "Vegan", "No Artificial Flavors"],
+      "features": [
+        "Organic Ingredients",
+        "25g Protein",
+        "Vegan",
+        "No Artificial Flavors"
+      ],
       "description": "Premium plant-based protein powder made from organic pea and hemp protein.",
       "specifications": {
         "Protein per Serving": "25g",

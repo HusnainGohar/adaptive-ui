@@ -1,32 +1,31 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { useUser } from "../context/UserContext"
-import PersonaSwitcher from "./PersonaSwitcher"
-import { useLogoutMutation, useUserQuery } from "../hooks/auth"
-import { usePersonaQuery } from "../hooks/usePersonaQuery"
+import { useEffect, useState } from "react";
+import { useUser } from "../context/UserContext";
+import PersonaSwitcher from "./PersonaSwitcher";
+import { useLogoutMutation, useUserQuery } from "../hooks/auth";
+import { usePersonaQuery } from "../hooks/usePersonaQuery";
 
 export default function Header({ currentView, onNavigate }) {
-  const { getCartItemCount, setCurrentPersona } = useUser()
-  const {mutateAsync: signOut} = useLogoutMutation()
-  const {data: user} = useUserQuery()
-  const {data: persona} = usePersonaQuery(user?.stats)
-  console.log({user});
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
+  const { getCartItemCount, setCurrentPersona } = useUser();
+  const { mutateAsync: signOut } = useLogoutMutation();
+  const { data: user } = useUserQuery();
+  const { data: persona } = usePersonaQuery(user?.stats);
+  console.log({ user });
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   const handleSignOut = () => {
-    signOut()
-    setIsUserMenuOpen(false)
-    onNavigate("home")
-  }
+    signOut();
+    setIsUserMenuOpen(false);
+    onNavigate("home");
+  };
 
   useEffect(() => {
-    console.log({persona});
-    
-    setCurrentPersona(persona?.persona)
-  }, [persona])
+    console.log({ persona });
 
+    setCurrentPersona(persona?.persona);
+  }, [persona]);
 
   return (
     <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
@@ -46,7 +45,9 @@ export default function Header({ currentView, onNavigate }) {
             <button
               onClick={() => onNavigate("home")}
               className={`font-medium transition-colors ${
-                currentView === "home" ? "text-blue-600" : "text-gray-700 hover:text-blue-600"
+                currentView === "home"
+                  ? "text-blue-600"
+                  : "text-gray-700 hover:text-blue-600"
               }`}
             >
               Home
@@ -54,7 +55,9 @@ export default function Header({ currentView, onNavigate }) {
             <button
               onClick={() => onNavigate("products")}
               className={`font-medium transition-colors ${
-                currentView === "products" ? "text-blue-600" : "text-gray-700 hover:text-blue-600"
+                currentView === "products"
+                  ? "text-blue-600"
+                  : "text-gray-700 hover:text-blue-600"
               }`}
             >
               Products
@@ -62,7 +65,9 @@ export default function Header({ currentView, onNavigate }) {
             <button
               onClick={() => onNavigate("categories")}
               className={`font-medium transition-colors ${
-                currentView === "categories" ? "text-blue-600" : "text-gray-700 hover:text-blue-600"
+                currentView === "categories"
+                  ? "text-blue-600"
+                  : "text-gray-700 hover:text-blue-600"
               }`}
             >
               Categories
@@ -78,7 +83,12 @@ export default function Header({ currentView, onNavigate }) {
               onClick={() => onNavigate("cart")}
               className="relative p-2 text-gray-700 hover:text-blue-600 transition-colors"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -100,10 +110,26 @@ export default function Header({ currentView, onNavigate }) {
                   onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
                   className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 transition-colors"
                 >
-                  <img src={user.avatar || "/placeholder.svg"} alt={user.name} className="w-8 h-8 rounded-full" />
-                  <span className="hidden md:block font-medium text-gray-700">{user.name}</span>
-                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <img
+                    src={user.avatar || "/placeholder.svg"}
+                    alt={user.name}
+                    className="w-8 h-8 rounded-full"
+                  />
+                  <span className="hidden md:block font-medium text-gray-700">
+                    {user.name}
+                  </span>
+                  <svg
+                    className="w-4 h-4 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
 
@@ -117,8 +143,12 @@ export default function Header({ currentView, onNavigate }) {
                           className="w-12 h-12 rounded-full"
                         />
                         <div>
-                          <div className="font-semibold text-gray-900">{user.name}</div>
-                          <div className="text-sm text-gray-500">{user.email}</div>
+                          <div className="font-semibold text-gray-900">
+                            {user.name}
+                          </div>
+                          <div className="text-sm text-gray-500">
+                            {user.email}
+                          </div>
                           {user.isVip && (
                             <div className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded mt-1 inline-block">
                               VIP Member
@@ -131,8 +161,8 @@ export default function Header({ currentView, onNavigate }) {
                     <div className="p-2">
                       <button
                         onClick={() => {
-                          onNavigate("profile")
-                          setIsUserMenuOpen(false)
+                          onNavigate("profile");
+                          setIsUserMenuOpen(false);
                         }}
                         className="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
                       >
@@ -140,8 +170,8 @@ export default function Header({ currentView, onNavigate }) {
                       </button>
                       <button
                         onClick={() => {
-                          onNavigate("orders")
-                          setIsUserMenuOpen(false)
+                          onNavigate("orders");
+                          setIsUserMenuOpen(false);
                         }}
                         className="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
                       >
@@ -149,8 +179,8 @@ export default function Header({ currentView, onNavigate }) {
                       </button>
                       <button
                         onClick={() => {
-                          onNavigate("wishlist")
-                          setIsUserMenuOpen(false)
+                          onNavigate("wishlist");
+                          setIsUserMenuOpen(false);
                         }}
                         className="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
                       >
@@ -185,9 +215,22 @@ export default function Header({ currentView, onNavigate }) {
             )}
 
             {/* Mobile menu button */}
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2 text-gray-700">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 text-gray-700"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             </button>
           </div>
@@ -199,8 +242,8 @@ export default function Header({ currentView, onNavigate }) {
             <nav className="flex flex-col gap-4">
               <button
                 onClick={() => {
-                  onNavigate("home")
-                  setIsMenuOpen(false)
+                  onNavigate("home");
+                  setIsMenuOpen(false);
                 }}
                 className="text-left font-medium text-gray-700 hover:text-blue-600 transition-colors"
               >
@@ -208,8 +251,8 @@ export default function Header({ currentView, onNavigate }) {
               </button>
               <button
                 onClick={() => {
-                  onNavigate("products")
-                  setIsMenuOpen(false)
+                  onNavigate("products");
+                  setIsMenuOpen(false);
                 }}
                 className="text-left font-medium text-gray-700 hover:text-blue-600 transition-colors"
               >
@@ -217,8 +260,8 @@ export default function Header({ currentView, onNavigate }) {
               </button>
               <button
                 onClick={() => {
-                  onNavigate("categories")
-                  setIsMenuOpen(false)
+                  onNavigate("categories");
+                  setIsMenuOpen(false);
                 }}
                 className="text-left font-medium text-gray-700 hover:text-blue-600 transition-colors"
               >
@@ -228,8 +271,8 @@ export default function Header({ currentView, onNavigate }) {
                 <>
                   <button
                     onClick={() => {
-                      onNavigate("signin")
-                      setIsMenuOpen(false)
+                      onNavigate("signin");
+                      setIsMenuOpen(false);
                     }}
                     className="text-left font-medium text-gray-700 hover:text-blue-600 transition-colors"
                   >
@@ -237,8 +280,8 @@ export default function Header({ currentView, onNavigate }) {
                   </button>
                   <button
                     onClick={() => {
-                      onNavigate("signup")
-                      setIsMenuOpen(false)
+                      onNavigate("signup");
+                      setIsMenuOpen(false);
                     }}
                     className="text-left font-medium bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                   >
@@ -251,5 +294,5 @@ export default function Header({ currentView, onNavigate }) {
         )}
       </div>
     </header>
-  )
+  );
 }

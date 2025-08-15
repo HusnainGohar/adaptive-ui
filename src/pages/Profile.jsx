@@ -1,23 +1,25 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useAuth } from "../context/AuthContext"
-import { useUser } from "../context/UserContext"
+import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useUser } from "../context/UserContext";
 
 export default function Profile({ onNavigate }) {
-  const { user, updateProfile } = useAuth()
-  const { currentPersona, setCurrentPersona } = useUser()
-  const [isEditing, setIsEditing] = useState(false)
+  const { user, updateProfile } = useAuth();
+  const { currentPersona, setCurrentPersona } = useUser();
+  const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: user?.name || "",
     email: user?.email || "",
-  })
+  });
 
   if (!user) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Please sign in to view your profile</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Please sign in to view your profile
+          </h2>
           <button
             onClick={() => onNavigate("signin")}
             className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
@@ -26,21 +28,21 @@ export default function Profile({ onNavigate }) {
           </button>
         </div>
       </div>
-    )
+    );
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    updateProfile(formData)
-    setIsEditing(false)
-  }
+    e.preventDefault();
+    updateProfile(formData);
+    setIsEditing(false);
+  };
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -77,7 +79,9 @@ export default function Profile({ onNavigate }) {
               {/* Profile Information */}
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-semibold text-gray-900">Profile Information</h2>
+                  <h2 className="text-xl font-semibold text-gray-900">
+                    Profile Information
+                  </h2>
                   <button
                     onClick={() => setIsEditing(!isEditing)}
                     className="text-blue-600 hover:text-blue-700 font-medium"
@@ -89,7 +93,9 @@ export default function Profile({ onNavigate }) {
                 {isEditing ? (
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Full Name
+                      </label>
                       <input
                         type="text"
                         name="name"
@@ -99,7 +105,9 @@ export default function Profile({ onNavigate }) {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Email
+                      </label>
                       <input
                         type="email"
                         name="email"
@@ -118,16 +126,24 @@ export default function Profile({ onNavigate }) {
                 ) : (
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-500">Full Name</label>
+                      <label className="block text-sm font-medium text-gray-500">
+                        Full Name
+                      </label>
                       <p className="text-gray-900">{user.name}</p>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-500">Email</label>
+                      <label className="block text-sm font-medium text-gray-500">
+                        Email
+                      </label>
                       <p className="text-gray-900">{user.email}</p>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-500">Member Since</label>
-                      <p className="text-gray-900">{new Date(user.joinDate).toLocaleDateString()}</p>
+                      <label className="block text-sm font-medium text-gray-500">
+                        Member Since
+                      </label>
+                      <p className="text-gray-900">
+                        {new Date(user.joinDate).toLocaleDateString()}
+                      </p>
                     </div>
                   </div>
                 )}
@@ -135,13 +151,19 @@ export default function Profile({ onNavigate }) {
 
               {/* Account Stats */}
               <div>
-                <h2 className="text-xl font-semibold text-gray-900 mb-6">Account Overview</h2>
+                <h2 className="text-xl font-semibold text-gray-900 mb-6">
+                  Account Overview
+                </h2>
                 <div className="space-y-4">
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="font-semibold text-blue-900">Loyalty Points</h3>
-                        <p className="text-blue-700">{user.loyaltyPoints} points available</p>
+                        <h3 className="font-semibold text-blue-900">
+                          Loyalty Points
+                        </h3>
+                        <p className="text-blue-700">
+                          {user.loyaltyPoints} points available
+                        </p>
                       </div>
                       <div className="text-3xl text-blue-600">💎</div>
                     </div>
@@ -150,19 +172,29 @@ export default function Profile({ onNavigate }) {
                   <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="font-semibold text-green-900">Member Status</h3>
-                        <p className="text-green-700">{user.isVip ? "VIP Member" : "Regular Member"}</p>
+                        <h3 className="font-semibold text-green-900">
+                          Member Status
+                        </h3>
+                        <p className="text-green-700">
+                          {user.isVip ? "VIP Member" : "Regular Member"}
+                        </p>
                       </div>
-                      <div className="text-3xl text-green-600">{user.isVip ? "⭐" : "👤"}</div>
+                      <div className="text-3xl text-green-600">
+                        {user.isVip ? "⭐" : "👤"}
+                      </div>
                     </div>
                   </div>
 
                   <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="font-semibold text-purple-900">Shopping Persona</h3>
+                        <h3 className="font-semibold text-purple-900">
+                          Shopping Persona
+                        </h3>
                         <p className="text-purple-700">
-                          {currentPersona.replace("_", " ").replace(/\b\w/g, (l) => l.toUpperCase())}
+                          {currentPersona
+                            .replace("_", " ")
+                            .replace(/\b\w/g, (l) => l.toUpperCase())}
                         </p>
                       </div>
                       <div className="text-3xl text-purple-600">🎭</div>
@@ -174,7 +206,9 @@ export default function Profile({ onNavigate }) {
 
             {/* Quick Actions */}
             <div className="mt-8 pt-8 border-t border-gray-200">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6">Quick Actions</h2>
+              <h2 className="text-xl font-semibold text-gray-900 mb-6">
+                Quick Actions
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <button
                   onClick={() => onNavigate("orders")}
@@ -183,7 +217,9 @@ export default function Profile({ onNavigate }) {
                   <div className="text-2xl">📦</div>
                   <div className="text-left">
                     <div className="font-medium text-gray-900">My Orders</div>
-                    <div className="text-sm text-gray-500">View order history</div>
+                    <div className="text-sm text-gray-500">
+                      View order history
+                    </div>
                   </div>
                 </button>
 
@@ -204,7 +240,9 @@ export default function Profile({ onNavigate }) {
                 >
                   <div className="text-2xl">🛍️</div>
                   <div className="text-left">
-                    <div className="font-medium text-gray-900">Continue Shopping</div>
+                    <div className="font-medium text-gray-900">
+                      Continue Shopping
+                    </div>
                     <div className="text-sm text-gray-500">Browse products</div>
                   </div>
                 </button>
@@ -214,5 +252,5 @@ export default function Profile({ onNavigate }) {
         </div>
       </div>
     </div>
-  )
+  );
 }

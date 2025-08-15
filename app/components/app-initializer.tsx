@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import { useEffect } from 'react'
-import { initAmplitude } from '@/lib/amplitude'
+import { useEffect } from "react";
+import { initAmplitude } from "@/lib/amplitude";
 
 export const AppInitializer = () => {
   useEffect(() => {
-    initAmplitude()
-  }, [])
+    initAmplitude();
+  }, []);
 
-  return null
-}
+  return null;
+};

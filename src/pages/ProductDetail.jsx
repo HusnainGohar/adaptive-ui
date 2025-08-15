@@ -1,19 +1,21 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useUser } from "../context/UserContext"
-import { PERSONAS } from "../config/personas"
+import { useState } from "react";
+import { useUser } from "../context/UserContext";
+import { PERSONAS } from "../config/personas";
 
 export default function ProductDetail({ product, onBack }) {
-  const { currentPersona, addToCart } = useUser()
-  const [quantity, setQuantity] = useState(1)
-  const [addedToCart, setAddedToCart] = useState(false)
+  const { currentPersona, addToCart } = useUser();
+  const [quantity, setQuantity] = useState(1);
+  const [addedToCart, setAddedToCart] = useState(false);
 
   if (!product) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Product not found</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Product not found
+          </h2>
           <button
             onClick={onBack}
             className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
@@ -22,14 +24,14 @@ export default function ProductDetail({ product, onBack }) {
           </button>
         </div>
       </div>
-    )
+    );
   }
 
   const handleAddToCart = () => {
-    addToCart(product, quantity)
-    setAddedToCart(true)
-    setTimeout(() => setAddedToCart(false), 2000)
-  }
+    addToCart(product, quantity);
+    setAddedToCart(true);
+    setTimeout(() => setAddedToCart(false), 2000);
+  };
 
   const renderByPersona = () => {
     switch (currentPersona) {
@@ -44,7 +46,9 @@ export default function ProductDetail({ product, onBack }) {
               />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                {product.name}
+              </h1>
               <div className="flex items-center gap-4 mb-6">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, i) => (
@@ -57,29 +61,48 @@ export default function ProductDetail({ product, onBack }) {
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
-                  <span className="text-xl font-bold text-gray-900 ml-2">{product.rating}</span>
+                  <span className="text-xl font-bold text-gray-900 ml-2">
+                    {product.rating}
+                  </span>
                 </div>
-                <span className="text-lg text-gray-600">({product.reviewCount} reviews)</span>
+                <span className="text-lg text-gray-600">
+                  ({product.reviewCount} reviews)
+                </span>
               </div>
 
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-semibold text-blue-900 mb-4">Customer Reviews Highlight</h3>
+                <h3 className="text-lg font-semibold text-blue-900 mb-4">
+                  Customer Reviews Highlight
+                </h3>
                 <div className="space-y-3">
                   <div className="border-l-4 border-blue-500 pl-4">
-                    <p className="text-gray-700">"Excellent build quality and performance. Exactly as described!"</p>
-                    <p className="text-sm text-gray-500 mt-1">- Verified Buyer ⭐⭐⭐⭐⭐</p>
+                    <p className="text-gray-700">
+                      "Excellent build quality and performance. Exactly as
+                      described!"
+                    </p>
+                    <p className="text-sm text-gray-500 mt-1">
+                      - Verified Buyer ⭐⭐⭐⭐⭐
+                    </p>
                   </div>
                   <div className="border-l-4 border-blue-500 pl-4">
-                    <p className="text-gray-700">"Great value for money. Would definitely recommend."</p>
-                    <p className="text-sm text-gray-500 mt-1">- Verified Buyer ⭐⭐⭐⭐⭐</p>
+                    <p className="text-gray-700">
+                      "Great value for money. Would definitely recommend."
+                    </p>
+                    <p className="text-sm text-gray-500 mt-1">
+                      - Verified Buyer ⭐⭐⭐⭐⭐
+                    </p>
                   </div>
                 </div>
               </div>
 
               <div className="flex items-center gap-4 mb-6">
-                <span className="text-3xl font-bold text-gray-900">${product.price}</span>
+                <span className="text-3xl font-bold text-gray-900">
+                  ${product.price}
+                </span>
                 {product.originalPrice > product.price && (
-                  <span className="text-xl text-gray-500 line-through">${product.originalPrice}</span>
+                  <span className="text-xl text-gray-500 line-through">
+                    ${product.originalPrice}
+                  </span>
                 )}
               </div>
 
@@ -93,7 +116,9 @@ export default function ProductDetail({ product, onBack }) {
                   >
                     -
                   </button>
-                  <span className="w-12 text-center font-medium text-lg">{quantity}</span>
+                  <span className="w-12 text-center font-medium text-lg">
+                    {quantity}
+                  </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
                     className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
@@ -106,14 +131,16 @@ export default function ProductDetail({ product, onBack }) {
               <button
                 onClick={handleAddToCart}
                 className={`w-full py-3 rounded-lg font-semibold text-lg transition-colors ${
-                  addedToCart ? "bg-green-600 text-white" : "bg-blue-600 text-white hover:bg-blue-700"
+                  addedToCart
+                    ? "bg-green-600 text-white"
+                    : "bg-blue-600 text-white hover:bg-blue-700"
                 }`}
               >
                 {addedToCart ? "Added to Cart! ✓" : "Add to Cart"}
               </button>
             </div>
           </div>
-        )
+        );
 
       case PERSONAS.DEAL_HUNTER:
         return (
@@ -127,26 +154,42 @@ export default function ProductDetail({ product, onBack }) {
                 />
                 {product.onSale && (
                   <div className="absolute top-4 left-4 bg-red-500 text-white px-4 py-2 rounded-lg">
-                    <div className="text-lg font-bold">SAVE ${(product.originalPrice - product.price).toFixed(2)}</div>
+                    <div className="text-lg font-bold">
+                      SAVE ${(product.originalPrice - product.price).toFixed(2)}
+                    </div>
                     <div className="text-sm">
-                      {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
+                      {Math.round(
+                        ((product.originalPrice - product.price) /
+                          product.originalPrice) *
+                          100,
+                      )}
+                      % OFF
                     </div>
                   </div>
                 )}
               </div>
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                {product.name}
+              </h1>
 
               <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6 mb-6">
-                <h3 className="text-xl font-bold text-red-900 mb-3">🔥 Limited Time Deal!</h3>
+                <h3 className="text-xl font-bold text-red-900 mb-3">
+                  🔥 Limited Time Deal!
+                </h3>
                 <div className="flex items-center gap-4 mb-3">
-                  <span className="text-4xl font-bold text-red-600">${product.price}</span>
+                  <span className="text-4xl font-bold text-red-600">
+                    ${product.price}
+                  </span>
                   {product.originalPrice > product.price && (
                     <div>
-                      <span className="text-2xl text-gray-500 line-through">${product.originalPrice}</span>
+                      <span className="text-2xl text-gray-500 line-through">
+                        ${product.originalPrice}
+                      </span>
                       <div className="text-green-600 font-bold">
-                        You Save: ${(product.originalPrice - product.price).toFixed(2)}
+                        You Save: $
+                        {(product.originalPrice - product.price).toFixed(2)}
                       </div>
                     </div>
                   )}
@@ -159,7 +202,9 @@ export default function ProductDetail({ product, onBack }) {
               </div>
 
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-                <h4 className="font-semibold text-yellow-800 mb-2">💰 More Ways to Save:</h4>
+                <h4 className="font-semibold text-yellow-800 mb-2">
+                  💰 More Ways to Save:
+                </h4>
                 <ul className="text-sm text-yellow-700 space-y-1">
                   <li>• Buy 2, get 5% off</li>
                   <li>• Sign up for newsletter: Extra 10% off</li>
@@ -177,7 +222,9 @@ export default function ProductDetail({ product, onBack }) {
                   >
                     -
                   </button>
-                  <span className="w-12 text-center font-medium text-lg">{quantity}</span>
+                  <span className="w-12 text-center font-medium text-lg">
+                    {quantity}
+                  </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
                     className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
@@ -190,16 +237,20 @@ export default function ProductDetail({ product, onBack }) {
               <button
                 onClick={handleAddToCart}
                 className={`w-full py-3 rounded-lg font-semibold text-lg transition-colors ${
-                  addedToCart ? "bg-green-600 text-white" : "bg-red-600 text-white hover:bg-red-700"
+                  addedToCart
+                    ? "bg-green-600 text-white"
+                    : "bg-red-600 text-white hover:bg-red-700"
                 }`}
               >
                 {addedToCart ? "Added to Cart! ✓" : "GRAB THIS DEAL NOW!"}
               </button>
 
-              <div className="text-center text-sm text-gray-600">⏰ Deal ends in 2 days, 14 hours, 23 minutes</div>
+              <div className="text-center text-sm text-gray-600">
+                ⏰ Deal ends in 2 days, 14 hours, 23 minutes
+              </div>
             </div>
           </div>
-        )
+        );
 
       case PERSONAS.WINDOW_SHOPPER:
         return (
@@ -230,13 +281,19 @@ export default function ProductDetail({ product, onBack }) {
             </div>
             <div>
               <div className="text-sm text-gray-500 mb-2">{product.brand}</div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                {product.name}
+              </h1>
               <p className="text-gray-600 mb-6">{product.description}</p>
 
-              <div className="text-2xl font-bold text-gray-900 mb-6">${product.price}</div>
+              <div className="text-2xl font-bold text-gray-900 mb-6">
+                ${product.price}
+              </div>
 
               <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-semibold text-purple-900 mb-4">Style It With</h3>
+                <h3 className="text-lg font-semibold text-purple-900 mb-4">
+                  Style It With
+                </h3>
                 <div className="grid grid-cols-3 gap-3">
                   <div className="text-center">
                     <img
@@ -275,7 +332,9 @@ export default function ProductDetail({ product, onBack }) {
                   >
                     -
                   </button>
-                  <span className="w-12 text-center font-medium text-lg">{quantity}</span>
+                  <span className="w-12 text-center font-medium text-lg">
+                    {quantity}
+                  </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
                     className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
@@ -292,7 +351,9 @@ export default function ProductDetail({ product, onBack }) {
                 <button
                   onClick={handleAddToCart}
                   className={`flex-1 py-3 rounded-lg font-semibold text-lg transition-colors ${
-                    addedToCart ? "bg-green-600 text-white" : "bg-gray-900 text-white hover:bg-gray-800"
+                    addedToCart
+                      ? "bg-green-600 text-white"
+                      : "bg-gray-900 text-white hover:bg-gray-800"
                   }`}
                 >
                   {addedToCart ? "Added to Cart! ✓" : "Add to Cart"}
@@ -300,7 +361,7 @@ export default function ProductDetail({ product, onBack }) {
               </div>
             </div>
           </div>
-        )
+        );
 
       case PERSONAS.IMPULSE_SHOPPER:
         return (
@@ -319,13 +380,19 @@ export default function ProductDetail({ product, onBack }) {
               </div>
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                {product.name}
+              </h1>
 
               <div className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-200 rounded-lg p-6 mb-6">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-purple-600 mb-2">${product.price}</div>
+                  <div className="text-4xl font-bold text-purple-600 mb-2">
+                    ${product.price}
+                  </div>
                   {product.originalPrice > product.price && (
-                    <div className="text-lg text-gray-500 line-through mb-2">${product.originalPrice}</div>
+                    <div className="text-lg text-gray-500 line-through mb-2">
+                      ${product.originalPrice}
+                    </div>
                   )}
                   <div className="text-orange-600 font-bold text-lg mb-4">
                     🔥 {product.reviewCount} people bought this today!
@@ -334,7 +401,9 @@ export default function ProductDetail({ product, onBack }) {
               </div>
 
               <div className="bg-yellow-100 border border-yellow-300 rounded-lg p-4 mb-6">
-                <h4 className="font-bold text-yellow-800 mb-2">⚡ Act Fast - Special Offers:</h4>
+                <h4 className="font-bold text-yellow-800 mb-2">
+                  ⚡ Act Fast - Special Offers:
+                </h4>
                 <ul className="text-sm text-yellow-700 space-y-1">
                   <li>• Free express shipping (today only)</li>
                   <li>• Buy now, pay later available</li>
@@ -352,7 +421,9 @@ export default function ProductDetail({ product, onBack }) {
                   >
                     -
                   </button>
-                  <span className="w-12 text-center font-medium text-lg">{quantity}</span>
+                  <span className="w-12 text-center font-medium text-lg">
+                    {quantity}
+                  </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
                     className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
@@ -374,12 +445,16 @@ export default function ProductDetail({ product, onBack }) {
               </button>
 
               <div className="text-center">
-                <div className="text-red-600 font-bold animate-pulse">⏰ Offer expires in 1 hour!</div>
-                <div className="text-sm text-gray-600 mt-2">Join 2,847 happy customers</div>
+                <div className="text-red-600 font-bold animate-pulse">
+                  ⏰ Offer expires in 1 hour!
+                </div>
+                <div className="text-sm text-gray-600 mt-2">
+                  Join 2,847 happy customers
+                </div>
               </div>
             </div>
           </div>
-        )
+        );
 
       case PERSONAS.LOYAL_CUSTOMER:
         return (
@@ -395,10 +470,14 @@ export default function ProductDetail({ product, onBack }) {
               <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-4 py-2 rounded-lg inline-block mb-4">
                 <span className="font-bold">⭐ VIP Member Exclusive</span>
               </div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                {product.name}
+              </h1>
 
               <div className="bg-yellow-50 border-2 border-yellow-200 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-semibold text-yellow-800 mb-4">💎 Your VIP Benefits</h3>
+                <h3 className="text-lg font-semibold text-yellow-800 mb-4">
+                  💎 Your VIP Benefits
+                </h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span>Member Price:</span>
@@ -406,7 +485,9 @@ export default function ProductDetail({ product, onBack }) {
                   </div>
                   <div className="flex justify-between">
                     <span>Loyalty Points Earned:</span>
-                    <span className="font-bold text-green-600">+{Math.floor(product.price * 0.05)} points</span>
+                    <span className="font-bold text-green-600">
+                      +{Math.floor(product.price * 0.05)} points
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span>Free Express Shipping:</span>
@@ -420,9 +501,12 @@ export default function ProductDetail({ product, onBack }) {
               </div>
 
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                <h4 className="font-semibold text-blue-800 mb-2">📦 Based on your purchase history:</h4>
+                <h4 className="font-semibold text-blue-800 mb-2">
+                  📦 Based on your purchase history:
+                </h4>
                 <p className="text-sm text-blue-700">
-                  You might also like our premium accessories bundle (20% off for VIP members)
+                  You might also like our premium accessories bundle (20% off
+                  for VIP members)
                 </p>
               </div>
 
@@ -436,7 +520,9 @@ export default function ProductDetail({ product, onBack }) {
                   >
                     -
                   </button>
-                  <span className="w-12 text-center font-medium text-lg">{quantity}</span>
+                  <span className="w-12 text-center font-medium text-lg">
+                    {quantity}
+                  </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
                     className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
@@ -449,7 +535,9 @@ export default function ProductDetail({ product, onBack }) {
               <button
                 onClick={handleAddToCart}
                 className={`w-full py-3 rounded-lg font-semibold text-lg transition-colors ${
-                  addedToCart ? "bg-green-600 text-white" : "bg-yellow-500 text-black hover:bg-yellow-600"
+                  addedToCart
+                    ? "bg-green-600 text-white"
+                    : "bg-yellow-500 text-black hover:bg-yellow-600"
                 }`}
               >
                 {addedToCart ? "Added to Cart! ✓" : "Add to Cart - VIP Price"}
@@ -460,7 +548,7 @@ export default function ProductDetail({ product, onBack }) {
               </div>
             </div>
           </div>
-        )
+        );
 
       case PERSONAS.PRACTICAL_SHOPPER:
         return (
@@ -473,33 +561,48 @@ export default function ProductDetail({ product, onBack }) {
               />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                {product.name}
+              </h1>
 
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4">📋 Product Specifications</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                  📋 Product Specifications
+                </h3>
                 <div className="space-y-2 text-sm">
-                  {Object.entries(product.specifications).map(([key, value]) => (
-                    <div key={key} className="flex justify-between border-b border-gray-200 pb-1">
-                      <span className="text-gray-600">{key}:</span>
-                      <span className="font-medium">{value}</span>
-                    </div>
-                  ))}
+                  {Object.entries(product.specifications).map(
+                    ([key, value]) => (
+                      <div
+                        key={key}
+                        className="flex justify-between border-b border-gray-200 pb-1"
+                      >
+                        <span className="text-gray-600">{key}:</span>
+                        <span className="font-medium">{value}</span>
+                      </div>
+                    ),
+                  )}
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-green-600">{product.rating}/5</div>
+                  <div className="text-2xl font-bold text-green-600">
+                    {product.rating}/5
+                  </div>
                   <div className="text-sm text-gray-600">Customer Rating</div>
                 </div>
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-blue-600">${product.price}</div>
+                  <div className="text-2xl font-bold text-blue-600">
+                    ${product.price}
+                  </div>
                   <div className="text-sm text-gray-600">Best Value</div>
                 </div>
               </div>
 
               <div className="bg-gray-100 rounded-lg p-4 mb-6">
-                <h4 className="font-semibold text-gray-800 mb-2">✓ What's Included:</h4>
+                <h4 className="font-semibold text-gray-800 mb-2">
+                  ✓ What's Included:
+                </h4>
                 <ul className="text-sm text-gray-700 space-y-1">
                   <li>• Product with full warranty</li>
                   <li>• Free shipping & returns</li>
@@ -518,7 +621,9 @@ export default function ProductDetail({ product, onBack }) {
                   >
                     -
                   </button>
-                  <span className="w-12 text-center font-medium text-lg">{quantity}</span>
+                  <span className="w-12 text-center font-medium text-lg">
+                    {quantity}
+                  </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
                     className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
@@ -531,14 +636,16 @@ export default function ProductDetail({ product, onBack }) {
               <button
                 onClick={handleAddToCart}
                 className={`w-full py-3 rounded-lg font-semibold text-lg transition-colors ${
-                  addedToCart ? "bg-green-600 text-white" : "bg-gray-800 text-white hover:bg-gray-900"
+                  addedToCart
+                    ? "bg-green-600 text-white"
+                    : "bg-gray-800 text-white hover:bg-gray-900"
                 }`}
               >
                 {addedToCart ? "Added to Cart! ✓" : "Add to Cart - Best Value"}
               </button>
             </div>
           </div>
-        )
+        );
 
       case PERSONAS.ETHICAL_SHOPPER:
         return (
@@ -551,21 +658,29 @@ export default function ProductDetail({ product, onBack }) {
               />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                {product.name}
+              </h1>
 
               <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-semibold text-green-800 mb-4">🌍 Sustainability Impact</h3>
+                <h3 className="text-lg font-semibold text-green-800 mb-4">
+                  🌍 Sustainability Impact
+                </h3>
                 <div className="space-y-3">
                   {product.sustainability?.carbonNeutral && (
                     <div className="flex items-center gap-2">
                       <span className="text-green-600">✓</span>
-                      <span className="text-sm">Carbon neutral production and shipping</span>
+                      <span className="text-sm">
+                        Carbon neutral production and shipping
+                      </span>
                     </div>
                   )}
                   {product.sustainability?.ethicalSourcing && (
                     <div className="flex items-center gap-2">
                       <span className="text-green-600">✓</span>
-                      <span className="text-sm">Ethically sourced materials</span>
+                      <span className="text-sm">
+                        Ethically sourced materials
+                      </span>
                     </div>
                   )}
                   {product.sustainability?.recyclablePackaging && (
@@ -577,16 +692,21 @@ export default function ProductDetail({ product, onBack }) {
                   {product.sustainability?.organicMaterial && (
                     <div className="flex items-center gap-2">
                       <span className="text-green-600">✓</span>
-                      <span className="text-sm">Made with organic materials</span>
+                      <span className="text-sm">
+                        Made with organic materials
+                      </span>
                     </div>
                   )}
                 </div>
               </div>
 
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                <h4 className="font-semibold text-blue-800 mb-2">🤝 Social Impact</h4>
+                <h4 className="font-semibold text-blue-800 mb-2">
+                  🤝 Social Impact
+                </h4>
                 <p className="text-sm text-blue-700">
-                  Every purchase supports fair trade practices and contributes to community development programs.
+                  Every purchase supports fair trade practices and contributes
+                  to community development programs.
                 </p>
               </div>
 
@@ -600,7 +720,9 @@ export default function ProductDetail({ product, onBack }) {
                   >
                     -
                   </button>
-                  <span className="w-12 text-center font-medium text-lg">{quantity}</span>
+                  <span className="w-12 text-center font-medium text-lg">
+                    {quantity}
+                  </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
                     className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
@@ -613,16 +735,20 @@ export default function ProductDetail({ product, onBack }) {
               <button
                 onClick={handleAddToCart}
                 className={`w-full py-3 rounded-lg font-semibold text-lg transition-colors ${
-                  addedToCart ? "bg-green-600 text-white" : "bg-green-600 text-white hover:bg-green-700"
+                  addedToCart
+                    ? "bg-green-600 text-white"
+                    : "bg-green-600 text-white hover:bg-green-700"
                 }`}
               >
                 {addedToCart ? "Added to Cart! ✓" : "Shop Responsibly"}
               </button>
 
-              <div className="text-center text-sm text-gray-600">🌱 Making a positive impact with every purchase</div>
+              <div className="text-center text-sm text-gray-600">
+                🌱 Making a positive impact with every purchase
+              </div>
             </div>
           </div>
-        )
+        );
 
       case PERSONAS.GIFT_GIVER:
         return (
@@ -638,10 +764,14 @@ export default function ProductDetail({ product, onBack }) {
               <div className="bg-pink-500 text-white px-4 py-2 rounded-lg inline-block mb-4">
                 <span className="font-bold">🎁 Perfect Gift Choice</span>
               </div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                {product.name}
+              </h1>
 
               <div className="bg-pink-50 border-2 border-pink-200 rounded-lg p-6 mb-6">
-                <h3 className="text-lg font-semibold text-pink-800 mb-4">🎀 Gift Services</h3>
+                <h3 className="text-lg font-semibold text-pink-800 mb-4">
+                  🎀 Gift Services
+                </h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-center gap-2">
                     <span className="text-pink-600">✓</span>
@@ -667,12 +797,22 @@ export default function ProductDetail({ product, onBack }) {
               </div>
 
               <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
-                <h4 className="font-semibold text-purple-800 mb-2">💝 Perfect for:</h4>
+                <h4 className="font-semibold text-purple-800 mb-2">
+                  💝 Perfect for:
+                </h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="bg-purple-200 text-purple-800 px-2 py-1 rounded text-xs">Birthdays</span>
-                  <span className="bg-purple-200 text-purple-800 px-2 py-1 rounded text-xs">Anniversaries</span>
-                  <span className="bg-purple-200 text-purple-800 px-2 py-1 rounded text-xs">Holidays</span>
-                  <span className="bg-purple-200 text-purple-800 px-2 py-1 rounded text-xs">Graduations</span>
+                  <span className="bg-purple-200 text-purple-800 px-2 py-1 rounded text-xs">
+                    Birthdays
+                  </span>
+                  <span className="bg-purple-200 text-purple-800 px-2 py-1 rounded text-xs">
+                    Anniversaries
+                  </span>
+                  <span className="bg-purple-200 text-purple-800 px-2 py-1 rounded text-xs">
+                    Holidays
+                  </span>
+                  <span className="bg-purple-200 text-purple-800 px-2 py-1 rounded text-xs">
+                    Graduations
+                  </span>
                 </div>
               </div>
 
@@ -686,7 +826,9 @@ export default function ProductDetail({ product, onBack }) {
                   >
                     -
                   </button>
-                  <span className="w-12 text-center font-medium text-lg">{quantity}</span>
+                  <span className="w-12 text-center font-medium text-lg">
+                    {quantity}
+                  </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
                     className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
@@ -699,7 +841,9 @@ export default function ProductDetail({ product, onBack }) {
               <button
                 onClick={handleAddToCart}
                 className={`w-full py-3 rounded-lg font-semibold text-lg transition-colors ${
-                  addedToCart ? "bg-green-600 text-white" : "bg-pink-600 text-white hover:bg-pink-700"
+                  addedToCart
+                    ? "bg-green-600 text-white"
+                    : "bg-pink-600 text-white hover:bg-pink-700"
                 }`}
               >
                 {addedToCart ? "Added to Cart! ✓" : "Send as Gift"}
@@ -710,7 +854,7 @@ export default function ProductDetail({ product, onBack }) {
               </div>
             </div>
           </div>
-        )
+        );
 
       default:
         return (
@@ -723,9 +867,13 @@ export default function ProductDetail({ product, onBack }) {
               />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{product.name}</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-4">
+                {product.name}
+              </h1>
               <p className="text-gray-600 mb-6">{product.description}</p>
-              <div className="text-2xl font-bold text-gray-900 mb-6">${product.price}</div>
+              <div className="text-2xl font-bold text-gray-900 mb-6">
+                ${product.price}
+              </div>
 
               {/* Quantity and Add to Cart */}
               <div className="flex items-center gap-4 mb-6">
@@ -737,7 +885,9 @@ export default function ProductDetail({ product, onBack }) {
                   >
                     -
                   </button>
-                  <span className="w-12 text-center font-medium text-lg">{quantity}</span>
+                  <span className="w-12 text-center font-medium text-lg">
+                    {quantity}
+                  </span>
                   <button
                     onClick={() => setQuantity(quantity + 1)}
                     className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition-colors"
@@ -750,16 +900,18 @@ export default function ProductDetail({ product, onBack }) {
               <button
                 onClick={handleAddToCart}
                 className={`w-full py-3 rounded-lg font-semibold text-lg transition-colors ${
-                  addedToCart ? "bg-green-600 text-white" : "bg-blue-600 text-white hover:bg-blue-700"
+                  addedToCart
+                    ? "bg-green-600 text-white"
+                    : "bg-blue-600 text-white hover:bg-blue-700"
                 }`}
               >
                 {addedToCart ? "Added to Cart! ✓" : "Add to Cart"}
               </button>
             </div>
           </div>
-        )
+        );
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 transition-all duration-500">
@@ -768,14 +920,26 @@ export default function ProductDetail({ product, onBack }) {
           onClick={onBack}
           className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
           Back to Products
         </button>
 
-        <div className="transition-all duration-500 ease-in-out">{renderByPersona()}</div>
+        <div className="transition-all duration-500 ease-in-out">
+          {renderByPersona()}
+        </div>
       </div>
     </div>
-  )
+  );
 }

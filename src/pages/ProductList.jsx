@@ -15,11 +15,10 @@ export default function ProductList({
   const { currentPersona } = useUser();
   const [sortBy, setSortBy] = useState("featured");
   const [filterCategory, setFilterCategory] = useState(
-    selectedCategory || "all"
+    selectedCategory || "all",
   );
 
   console.log(products);
-  
 
   const getPageTitle = () => {
     if (selectedCategory) {

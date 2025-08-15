@@ -1,61 +1,61 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useAuth } from "../context/AuthContext"
+import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
 export default function SignUp({ onNavigate }) {
-  const { signUp } = useAuth()
+  const { signUp } = useAuth();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
     agreeToTerms: false,
-  })
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState("")
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError("")
+    e.preventDefault();
+    setIsLoading(true);
+    setError("");
 
     // Validation
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match")
-      setIsLoading(false)
-      return
+      setError("Passwords do not match");
+      setIsLoading(false);
+      return;
     }
 
     if (formData.password.length < 6) {
-      setError("Password must be at least 6 characters long")
-      setIsLoading(false)
-      return
+      setError("Password must be at least 6 characters long");
+      setIsLoading(false);
+      return;
     }
 
     if (!formData.agreeToTerms) {
-      setError("Please agree to the terms and conditions")
-      setIsLoading(false)
-      return
+      setError("Please agree to the terms and conditions");
+      setIsLoading(false);
+      return;
     }
 
     try {
-      await signUp(formData.name, formData.email, formData.password)
-      onNavigate("home")
+      await signUp(formData.name, formData.email, formData.password);
+      onNavigate("home");
     } catch (err) {
-      setError("Failed to create account. Please try again.")
+      setError("Failed to create account. Please try again.");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target
+    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
       [name]: type === "checkbox" ? checked : value,
-    })
-  }
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -64,15 +64,23 @@ export default function SignUp({ onNavigate }) {
           <div className="flex justify-center">
             <span className="text-6xl">🛍️</span>
           </div>
-          <h2 className="mt-6 text-3xl font-bold text-gray-900">Create your account</h2>
-          <p className="mt-2 text-gray-600">Join AdaptiveShop and start your personalized shopping journey</p>
+          <h2 className="mt-6 text-3xl font-bold text-gray-900">
+            Create your account
+          </h2>
+          <p className="mt-2 text-gray-600">
+            Join AdaptiveShop and start your personalized shopping journey
+          </p>
         </div>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
               <div className="flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
                   <path
                     fillRule="evenodd"
                     d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
@@ -86,7 +94,10 @@ export default function SignUp({ onNavigate }) {
 
           <div className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Full Name
               </label>
               <input
@@ -102,7 +113,10 @@ export default function SignUp({ onNavigate }) {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Email address
               </label>
               <input
@@ -118,7 +132,10 @@ export default function SignUp({ onNavigate }) {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Password
               </label>
               <input
@@ -131,11 +148,16 @@ export default function SignUp({ onNavigate }) {
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="Create a password"
               />
-              <p className="mt-1 text-sm text-gray-500">Must be at least 6 characters long</p>
+              <p className="mt-1 text-sm text-gray-500">
+                Must be at least 6 characters long
+              </p>
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="confirmPassword"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Confirm Password
               </label>
               <input
@@ -160,13 +182,22 @@ export default function SignUp({ onNavigate }) {
               onChange={handleChange}
               className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
             />
-            <label htmlFor="agreeToTerms" className="ml-2 block text-sm text-gray-700">
+            <label
+              htmlFor="agreeToTerms"
+              className="ml-2 block text-sm text-gray-700"
+            >
               I agree to the{" "}
-              <button type="button" className="text-blue-600 hover:text-blue-500">
+              <button
+                type="button"
+                className="text-blue-600 hover:text-blue-500"
+              >
                 Terms and Conditions
               </button>{" "}
               and{" "}
-              <button type="button" className="text-blue-600 hover:text-blue-500">
+              <button
+                type="button"
+                className="text-blue-600 hover:text-blue-500"
+              >
                 Privacy Policy
               </button>
             </label>
@@ -179,8 +210,19 @@ export default function SignUp({ onNavigate }) {
           >
             {isLoading ? (
               <div className="flex items-center justify-center">
-                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <svg
+                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
                   <path
                     className="opacity-75"
                     fill="currentColor"
@@ -200,13 +242,19 @@ export default function SignUp({ onNavigate }) {
                 <div className="w-full border-t border-gray-300" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-gray-50 text-gray-500">Benefits of joining</span>
+                <span className="px-2 bg-gray-50 text-gray-500">
+                  Benefits of joining
+                </span>
               </div>
             </div>
 
             <div className="mt-6 space-y-3">
               <div className="flex items-center text-sm text-gray-600">
-                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <svg
+                  className="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
                   <path
                     fillRule="evenodd"
                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -216,7 +264,11 @@ export default function SignUp({ onNavigate }) {
                 Personalized shopping experience
               </div>
               <div className="flex items-center text-sm text-gray-600">
-                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <svg
+                  className="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
                   <path
                     fillRule="evenodd"
                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -226,7 +278,11 @@ export default function SignUp({ onNavigate }) {
                 Exclusive deals and early access
               </div>
               <div className="flex items-center text-sm text-gray-600">
-                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <svg
+                  className="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
                   <path
                     fillRule="evenodd"
                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -236,7 +292,11 @@ export default function SignUp({ onNavigate }) {
                 Loyalty points and rewards
               </div>
               <div className="flex items-center text-sm text-gray-600">
-                <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <svg
+                  className="w-5 h-5 text-green-500 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
                   <path
                     fillRule="evenodd"
                     d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -261,5 +321,5 @@ export default function SignUp({ onNavigate }) {
         </form>
       </div>
     </div>
-  )
+  );
 }

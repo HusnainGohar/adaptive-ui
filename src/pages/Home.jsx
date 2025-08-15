@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useUser } from "../context/UserContext"
-import ProductCard from "../components/ProductCard"
-import { PERSONAS } from "../config/personas"
+import { useUser } from "../context/UserContext";
+import ProductCard from "../components/ProductCard";
+import { PERSONAS } from "../config/personas";
 import { useProductsQuery } from "../hooks/products";
 import { useCategoriesQuery } from "../hooks/categories";
 
 export default function Home({ onNavigate, onProductClick, onCategoryClick }) {
-  const { currentPersona } = useUser()
+  const { currentPersona } = useUser();
   const { data: products = [] } = useProductsQuery();
   const { data: categories = [] } = useCategoriesQuery();
 
@@ -16,62 +16,67 @@ export default function Home({ onNavigate, onProductClick, onCategoryClick }) {
       case PERSONAS.REVIEW_READER:
         return {
           title: "Discover Top-Rated Products",
-          subtitle: "Shop with confidence using verified reviews and detailed ratings",
+          subtitle:
+            "Shop with confidence using verified reviews and detailed ratings",
           cta: "Browse Reviews",
-        }
+        };
       case PERSONAS.DEAL_HUNTER:
         return {
           title: "Unbeatable Deals & Discounts",
           subtitle: "Save big with our exclusive offers and price guarantees",
           cta: "Find Deals",
-        }
+        };
       case PERSONAS.WINDOW_SHOPPER:
         return {
           title: "Explore Trending Collections",
-          subtitle: "Discover the latest styles and get inspired by our curated selections",
+          subtitle:
+            "Discover the latest styles and get inspired by our curated selections",
           cta: "Browse Trends",
-        }
+        };
       case PERSONAS.IMPULSE_SHOPPER:
         return {
           title: "Hot Picks Just for You!",
           subtitle: "Limited-time offers on trending products you'll love",
           cta: "Shop Now",
-        }
+        };
       case PERSONAS.LOYAL_CUSTOMER:
         return {
           title: "Welcome Back, VIP Member",
-          subtitle: "Exclusive deals and early access to new arrivals just for you",
+          subtitle:
+            "Exclusive deals and early access to new arrivals just for you",
           cta: "View Exclusives",
-        }
+        };
       case PERSONAS.PRACTICAL_SHOPPER:
         return {
           title: "Smart Shopping, Better Value",
-          subtitle: "Quality products with detailed specs and best-in-class warranties",
+          subtitle:
+            "Quality products with detailed specs and best-in-class warranties",
           cta: "Compare Products",
-        }
+        };
       case PERSONAS.ETHICAL_SHOPPER:
         return {
           title: "Shop with Purpose",
           subtitle: "Sustainable, ethical products that make a positive impact",
           cta: "Shop Responsibly",
-        }
+        };
       case PERSONAS.GIFT_GIVER:
         return {
           title: "Perfect Gifts for Every Occasion",
-          subtitle: "Find thoughtful presents with free gift wrapping and personalization",
+          subtitle:
+            "Find thoughtful presents with free gift wrapping and personalization",
           cta: "Find Gifts",
-        }
+        };
       default:
         return {
           title: "Welcome to AdaptiveShop",
           subtitle: "Your personalized shopping experience",
           cta: "Start Shopping",
-        }
+        };
     }
-  }
+  };
 
-  const heroContent = getHeroContent()
-  const featuredProducts = products.slice(0, 6)
+  const heroContent = getHeroContent();
+  const featuredProducts = products.slice(0, 6);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -95,9 +100,12 @@ export default function Home({ onNavigate, onProductClick, onCategoryClick }) {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Shop by Category</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Shop by Category
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Explore our wide range of categories to find exactly what you're looking for
+              Explore our wide range of categories to find exactly what you're
+              looking for
             </p>
           </div>
 
@@ -115,10 +123,14 @@ export default function Home({ onNavigate, onProductClick, onCategoryClick }) {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300"></div>
-                  <div className="absolute top-4 left-4 text-3xl">{category.icon}</div>
+                  <div className="absolute top-4 left-4 text-3xl">
+                    {category.icon}
+                  </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{category.name}</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {category.name}
+                  </h3>
                   <p className="text-gray-600">{category.description}</p>
                 </div>
               </div>
@@ -131,7 +143,9 @@ export default function Home({ onNavigate, onProductClick, onCategoryClick }) {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Products</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Featured Products
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Discover our handpicked selection of popular and trending products
             </p>
@@ -139,7 +153,11 @@ export default function Home({ onNavigate, onProductClick, onCategoryClick }) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} onClick={() => onProductClick(product.id)} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                onClick={() => onProductClick(product.id)}
+              />
             ))}
           </div>
 
@@ -159,7 +177,8 @@ export default function Home({ onNavigate, onProductClick, onCategoryClick }) {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Stay in the Loop</h2>
           <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-            Get the latest updates on new products, exclusive deals, and personalized recommendations
+            Get the latest updates on new products, exclusive deals, and
+            personalized recommendations
           </p>
           <div className="max-w-md mx-auto flex">
             <input
@@ -174,5 +193,5 @@ export default function Home({ onNavigate, onProductClick, onCategoryClick }) {
         </div>
       </section>
     </div>
-  )
+  );
 }

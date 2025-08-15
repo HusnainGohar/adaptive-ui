@@ -1,6 +1,6 @@
-import { createContext, useContext } from 'react';
-import { useUserQuery } from '../hooks/auth';
-import { usePersonaQuery } from '../hooks/usePersonaQuery';
+import { createContext, useContext } from "react";
+import { useUserQuery } from "../hooks/auth";
+import { usePersonaQuery } from "../hooks/usePersonaQuery";
 
 const PersonaContext = createContext();
 
@@ -9,11 +9,19 @@ function getRandomInteger(min, max) {
 }
 
 export function PersonaProvider({ children }) {
-  const { data: user, isLoading: isUserLoading, error: userError } = useUserQuery();
+  const {
+    data: user,
+    isLoading: isUserLoading,
+    error: userError,
+  } = useUserQuery();
   const stats = user?.stats;
 
   // Use the persona query hook
-  const { data: personaData, isLoading: isPersonaLoading, error: personaError } = usePersonaQuery(stats);
+  const {
+    data: personaData,
+    isLoading: isPersonaLoading,
+    error: personaError,
+  } = usePersonaQuery(stats);
 
   const persona = personaData?.persona;
   const loading = isUserLoading || isPersonaLoading;
