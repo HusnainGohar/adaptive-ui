@@ -1,24 +1,46 @@
-from fastapi import APIRouter
-from pydantic import BaseModel
+# routes/categories_router.py
+from fastapi import APIRouter, HTTPException
+from app.database import get_database
+from app.models.categories import Category, CategoryResponse
 
 router = APIRouter()
 
-class Category(BaseModel):
-    id: int
-    name: str
-    description: str
-    image: str
-    icon: str
+def get_categories_collection():
+    return get_database()["categories"]
 
-categories = [
-    Category(id=1, name="Electronics", description="Latest tech gadgets and devices", image="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400&h=300&fit=crop", icon="📱"),
-    Category(id=2, name="Clothing", description="Fashion and apparel for everyone", image="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop", icon="👕"),
-    Category(id=3, name="Home & Kitchen", description="Everything for your home", image="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=300&fit=crop", icon="🏠"),
-    Category(id=4, name="Sports & Fitness", description="Stay active and healthy", image="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop", icon="🏃‍♂️"),
-    Category(id=5, name="Office", description="Productivity and workspace essentials", image="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop", icon="💼"),
-    Category(id=6, name="Health & Wellness", description="Products for your wellbeing", image="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop", icon="🌿"),
-]
+def convert_category_response(category: dict) -> CategoryResponse:
+    return CategoryResponse(**category)
 
-@router.get("/categories", response_model=list[Category])
-def get_categories():
-    return categories
+@router.get("/categories", response_model=list[CategoryResponse])
+async def get_categories():
+    collection = get_categories_collection()
+    try:
+        cursor = collection.find()  # Don't exclude _id
+        categories = await cursor.to_list(length=100)
+        return [
+            CategoryResponse(
+                id=str(cat["_id"]),
+                name=cat["name"],
+                description=cat["description"],
+                image=cat["image"],
+                icon=cat["icon"]
+            )
+            for cat in categories
+        ]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
+
+
+@router.post("/categories", response_model=CategoryResponse)
+async def create_category(category: Category):
+    collection = get_categories_collection()
+    category_dict = category.dict(by_alias=True, exclude={"id"})
+    result = await collection.insert_one(category_dict)
+    created = await collection.find_one({"_id": result.inserted_id})
+    return CategoryResponse(
+        id=str(created["_id"]),
+        name=created["name"],
+        description=created["description"],
+        image=created["image"],
+        icon=created["icon"]
+    )
