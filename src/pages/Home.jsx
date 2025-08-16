@@ -8,7 +8,7 @@ import { useCategoriesQuery } from "../hooks/categories";
 
 export default function Home({ onNavigate, onProductClick, onCategoryClick }) {
   const { currentPersona } = useUser();
-  const { data: products = [] } = useProductsQuery();
+  const { data: { products = [] } = {} } = useProductsQuery();
   const { data: categories = [] } = useCategoriesQuery();
 
   const getHeroContent = () => {

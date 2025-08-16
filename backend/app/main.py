@@ -6,8 +6,19 @@ from app.api.products import router as product_router
 from app.api.auth import router as auth_router
 from app.api.auth import get_current_user
 from app.api.models import User
+from contextlib import asynccontextmanager
+from app.database import get_db_client
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # --- startup ---
+    client = get_db_client()
+    await client.admin.command("ping")   # quick health check
+    yield                                # server is now running
+    # --- shutdown ---
+    client.close()
+
+app = FastAPI(lifespan=lifespan)
 
 # Allow React dev server (adjust port if needed)
 origins = ["*",

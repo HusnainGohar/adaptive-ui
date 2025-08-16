@@ -11,7 +11,7 @@ export default function ProductList({
   onProductClick,
   selectedCategory = null,
 }) {
-  const { isPending, error, data: products = [] } = useProductsQuery();
+  const { isPending, error, data: { products = [] } = {} } = useProductsQuery();
   const { currentPersona } = useUser();
   const [sortBy, setSortBy] = useState("featured");
   const [filterCategory, setFilterCategory] = useState(
