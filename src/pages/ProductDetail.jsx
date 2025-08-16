@@ -3,11 +3,15 @@
 import { useState } from "react";
 import { useUser } from "../context/UserContext";
 import { PERSONAS } from "../config/personas";
+import { useProductDetailsQuery } from "../hooks/products";
 
-export default function ProductDetail({ product, onBack }) {
+export default function ProductDetail({ productId, onBack }) {
   const { currentPersona, addToCart } = useUser();
+  const { data: product, isLoading } = useProductDetailsQuery(productId);
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
+
+  if (isLoading) return <div>Loading...</div>;
 
   if (!product) {
     return (
@@ -54,7 +58,11 @@ export default function ProductDetail({ product, onBack }) {
                   {[...Array(5)].map((_, i) => (
                     <svg
                       key={i}
-                      className={`w-6 h-6 ${i < Math.floor(product.rating) ? "text-yellow-400" : "text-gray-300"}`}
+                      className={`w-6 h-6 ${
+                        i < Math.floor(product.rating)
+                          ? "text-yellow-400"
+                          : "text-gray-300"
+                      }`}
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -161,7 +169,7 @@ export default function ProductDetail({ product, onBack }) {
                       {Math.round(
                         ((product.originalPrice - product.price) /
                           product.originalPrice) *
-                          100,
+                          100
                       )}
                       % OFF
                     </div>
@@ -579,7 +587,7 @@ export default function ProductDetail({ product, onBack }) {
                         <span className="text-gray-600">{key}:</span>
                         <span className="font-medium">{value}</span>
                       </div>
-                    ),
+                    )
                   )}
                 </div>
               </div>

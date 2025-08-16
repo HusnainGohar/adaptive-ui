@@ -518,5 +518,5 @@ export const products = [
 ];
 
 export const getProductById = (id) => {
-  return products.find((product) => product.id === Number.parseInt(id));
+  return products.find((product) => product.id === id);
 };

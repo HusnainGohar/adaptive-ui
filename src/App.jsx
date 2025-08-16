@@ -69,7 +69,7 @@ export default function App() {
       case "detail":
         return (
           <ProductDetail
-            product={selectedProduct}
+            productId={selectedProductId}
             onBack={handleBackToProducts}
           />
         );

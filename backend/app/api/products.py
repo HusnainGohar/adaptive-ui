@@ -3,10 +3,14 @@ from fastapi import APIRouter, HTTPException
 from typing import Optional
 from app.database import get_database
 from app.models.products import Product, ProductResponse, PaginatedProductResponse
+from bson import ObjectId
+from bson.errors import InvalidId
 
 router = APIRouter()
 
 def convert_product_response(product: dict) -> ProductResponse:
+    product = product.copy()
+    product["id"] = str(product.pop("_id"))  # Convert ObjectId to string
     return ProductResponse(**product)
 
 def get_products_collection():
@@ -32,27 +36,33 @@ async def get_all_products(
 
     try:
         total_count = await collection.count_documents(query_filter)
-        cursor = collection.find(query_filter, {"_id": 0}).skip(skip).limit(limit)
+        cursor = collection.find(query_filter).skip(skip).limit(limit)
         products = await cursor.to_list(length=limit)
 
         return PaginatedProductResponse(
             total_count=total_count,
             has_next=(skip + limit) < total_count,
-            products=[ProductResponse(**product) for product in products]
+            products=[convert_product_response(product) for product in products]
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
+from bson import ObjectId
+from bson.errors import InvalidId
+
 @router.get("/products/{product_id}", response_model=ProductResponse)
-async def get_product_by_id(product_id: int):
-    """Get a single product by its ID"""
+async def get_product_by_id(product_id: str):
+    """Get a single product by its MongoDB _id"""
     collection = get_products_collection()
     
     try:
-        product = await collection.find_one({"product_id": product_id})
+        object_id = ObjectId(product_id)
+        product = await collection.find_one({"_id": object_id})
         if product is None:
             raise HTTPException(status_code=404, detail="Product not found")
         return convert_product_response(product)
+    except InvalidId:
+        raise HTTPException(status_code=400, detail="Invalid product ID format")
     except Exception as e:
         if isinstance(e, HTTPException):
             raise e

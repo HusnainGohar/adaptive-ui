@@ -46,7 +46,7 @@ class Product(BaseModel):
     specifications: dict
 
 class ProductResponse(BaseModel):
-    id: int
+    id: str
     name: str
     price: float
     originalPrice: float

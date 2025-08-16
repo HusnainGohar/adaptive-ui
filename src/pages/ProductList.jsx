@@ -1,17 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { categories } from "../data/categories";
 import ProductCard from "../components/ProductCard";
 import { useUser } from "../context/UserContext";
 import { PERSONAS } from "../config/personas";
 import { useProductsQuery } from "../hooks/products";
+import { useCategoriesQuery } from "../hooks/categories";
 
 export default function ProductList({
   onProductClick,
   selectedCategory = null,
 }) {
   const { isPending, error, data: { products = [] } = {} } = useProductsQuery();
+  const { data: categories = [] } = useCategoriesQuery();
   const { currentPersona } = useUser();
   const [sortBy, setSortBy] = useState("featured");
   const [filterCategory, setFilterCategory] = useState(
