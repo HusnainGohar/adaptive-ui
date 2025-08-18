@@ -73,3 +73,40 @@ export const getUser = () => {
   const user = localStorage.getItem("user");
   return user ? JSON.parse(user) : null;
 };
+
+export const registerUser = async (full_name, email, username, password) => {
+  try {
+    const response = await axios.post(
+      `${API_URL}/auth/register`,
+      {
+        full_name,
+        username,
+        email,
+        password,
+      },
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        transformRequest: (data) => {
+          return Object.keys(data)
+            .map(
+              (key) =>
+                `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`,
+            )
+            .join("&");
+        },
+      },
+    );
+
+    // Store token in localStorage
+    if (response.data.access_token) {
+      localStorage.setItem("token", response.data.access_token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+    }
+
+    return response.data;
+  } catch (error) {
+    throw error.response?.data || error.message;
+  }
+};

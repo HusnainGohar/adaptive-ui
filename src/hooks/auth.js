@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { login, getCurrentUser, logout } from "../api/auth_api";
+import { login, getCurrentUser, logout, registerUser } from "../api/auth_api";
 
 export const useLoginMutation = () => {
   const queryClient = useQueryClient();
@@ -15,6 +15,35 @@ export const useLoginMutation = () => {
     },
     onSuccess: () => {
       console.log("Login successful, invalidating queries...");
+      // Invalidate and reset user query
+      queryClient.invalidateQueries({ queryKey: ["user-query"] });
+      queryClient.setQueryData(["user-query"], null);
+
+      // Invalidate and reset persona query
+      queryClient.invalidateQueries({ queryKey: ["persona"] });
+      queryClient.setQueryData(["persona"], null);
+
+      // Force refetch of user data
+      queryClient.refetchQueries({ queryKey: ["user-query"] });
+      queryClient.refetchQueries({ queryKey: ["persona"] });
+    },
+  });
+};
+
+export const useSignUpMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async ({ fullName, username, email, password }) => {
+      const response = await registerUser(fullName, email, username, password);
+      return response;
+    },
+    onError: (error) => {
+      console.error("SignUp error:", error);
+      throw error;
+    },
+    onSuccess: () => {
+      console.log("SignUp successful, invalidating queries...");
       // Invalidate and reset user query
       queryClient.invalidateQueries({ queryKey: ["user-query"] });
       queryClient.setQueryData(["user-query"], null);

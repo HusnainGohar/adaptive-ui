@@ -5,6 +5,7 @@ import {
   useLoginMutation,
   useUserQuery,
   useLogoutMutation,
+  useSignUpMutation,
 } from "../hooks/auth";
 
 const AuthContext = createContext();
@@ -20,6 +21,7 @@ export const AuthProvider = ({ children }) => {
   }, [isLoading, userQuery.isLoading]);
 
   const loginMutation = useLoginMutation();
+  const signUpMutation = useSignUpMutation();
   const logoutMutation = useLogoutMutation();
 
   const signIn = async (username, password) => {
@@ -31,10 +33,13 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const signUp = async (username, password) => {
-    // In a real application, this would call a registration API
-    // For now, we'll treat sign up as a login since we have hardcoded users
-    return signIn(username, password);
+  const signUp = async (fullName, email, username, password) => {
+    try {
+      await signUpMutation.mutateAsync({ fullName, email, username, password });
+      return userQuery.data;
+    } catch (error) {
+      throw error;
+    }
   };
 
   const signOut = () => {

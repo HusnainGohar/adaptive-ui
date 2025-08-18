@@ -40,8 +40,8 @@ export default function SignUp({ onNavigate }) {
     }
 
     try {
-      await signUp(formData.name, formData.email, formData.password);
-      onNavigate("home");
+      await signUp(formData.name, formData.email, formData.email, formData.password);
+      onNavigate("signin");
     } catch (err) {
       setError("Failed to create account. Please try again.");
     } finally {

@@ -5,7 +5,7 @@ from app.api.categories import router as category_router
 from app.api.products import router as product_router
 from app.api.auth import router as auth_router
 from app.api.auth import get_current_user
-from app.api.models import User
+from app.models.users import User
 from contextlib import asynccontextmanager
 from app.database import get_db_client
 

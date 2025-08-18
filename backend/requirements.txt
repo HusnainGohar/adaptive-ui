@@ -7,6 +7,7 @@ colorama==0.4.6
 cryptography==45.0.6
 dnspython==2.7.0
 ecdsa==0.19.1
+email_validator==2.2.0
 fastapi==0.115.12
 h11==0.16.0
 idna==3.10
@@ -21,6 +22,7 @@ pydantic==2.11.5
 pydantic_core==2.33.2
 pymongo==4.14.0
 python-dateutil==2.9.0.post0
+python-dotenv==1.1.1
 python-jose==3.5.0
 python-multipart==0.0.20
 pytz==2025.2
